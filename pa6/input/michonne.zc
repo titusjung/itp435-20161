@@ -1,0 +1,26 @@
+// Michonne supports comments yay!
+main_loop
+{
+	if (is_zombie(1))
+	{
+		attack();
+	}
+	else
+	{
+		if (is_passable())
+		{
+			forward();
+		}
+		else
+		{
+			if (is_random())
+			{
+				rotate(1);
+			}
+			else
+			{
+				rotate(0);
+			}
+		}
+	}
+}

@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9201D3491A4F688200B0F91F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9201D3481A4F688200B0F91F /* CoreFoundation.framework */; };
+		92296D801B86CE3D00FED746 /* Op.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D761B86CE3D00FED746 /* Op.cpp */; };
+		92296D811B86CE3D00FED746 /* ZomApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D7A1B86CE3D00FED746 /* ZomApp.cpp */; };
+		92296D821B86CE3D00FED746 /* ZomDrawPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D7C1B86CE3D00FED746 /* ZomDrawPanel.cpp */; };
+		92296D831B86CE3D00FED746 /* ZomFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D7E1B86CE3D00FED746 /* ZomFrame.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92FE70771A4F35CC004A0B98 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9201D3481A4F688200B0F91F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		92296D741B86CE3D00FED746 /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = SOURCE_ROOT; };
+		92296D751B86CE3D00FED746 /* Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Machine.h; sourceTree = SOURCE_ROOT; };
+		92296D761B86CE3D00FED746 /* Op.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Op.cpp; sourceTree = SOURCE_ROOT; };
+		92296D771B86CE3D00FED746 /* Op.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Op.h; sourceTree = SOURCE_ROOT; };
+		92296D781B86CE3D00FED746 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = SOURCE_ROOT; };
+		92296D791B86CE3D00FED746 /* Traits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Traits.h; sourceTree = SOURCE_ROOT; };
+		92296D7A1B86CE3D00FED746 /* ZomApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZomApp.cpp; sourceTree = SOURCE_ROOT; };
+		92296D7B1B86CE3D00FED746 /* ZomApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZomApp.h; sourceTree = SOURCE_ROOT; };
+		92296D7C1B86CE3D00FED746 /* ZomDrawPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZomDrawPanel.cpp; sourceTree = SOURCE_ROOT; };
+		92296D7D1B86CE3D00FED746 /* ZomDrawPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZomDrawPanel.h; sourceTree = SOURCE_ROOT; };
+		92296D7E1B86CE3D00FED746 /* ZomFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZomFrame.cpp; sourceTree = SOURCE_ROOT; };
+		92296D7F1B86CE3D00FED746 /* ZomFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZomFrame.h; sourceTree = SOURCE_ROOT; };
+		92B010861A5265F10032333B /* basic_movement.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = basic_movement.zom; path = zom/basic_movement.zom; sourceTree = "<group>"; };
+		92B010871A5265F10032333B /* daryl_dixon.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = daryl_dixon.zom; path = zom/daryl_dixon.zom; sourceTree = "<group>"; };
+		92B010881A5265F10032333B /* deer.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = deer.zom; path = zom/deer.zom; sourceTree = "<group>"; };
+		92B010891A5265F10032333B /* michonne.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = michonne.zom; path = zom/michonne.zom; sourceTree = "<group>"; };
+		92B0108A1A5265F10032333B /* search.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = search.zom; path = zom/search.zom; sourceTree = "<group>"; };
+		92B0108B1A5265F10032333B /* stationary.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = stationary.zom; path = zom/stationary.zom; sourceTree = "<group>"; };
+		92B0108C1A5265F10032333B /* the_governor.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = the_governor.zom; path = zom/the_governor.zom; sourceTree = "<group>"; };
+		92FE70791A4F35CC004A0B98 /* zombiewx-mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "zombiewx-mac"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92FE70761A4F35CC004A0B98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9201D3491A4F688200B0F91F /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92B010851A5265D60032333B /* ZOM files */ = {
+			isa = PBXGroup;
+			children = (
+				92B010861A5265F10032333B /* basic_movement.zom */,
+				92B010871A5265F10032333B /* daryl_dixon.zom */,
+				92B010881A5265F10032333B /* deer.zom */,
+				92B010891A5265F10032333B /* michonne.zom */,
+				92B0108A1A5265F10032333B /* search.zom */,
+				92B0108B1A5265F10032333B /* stationary.zom */,
+				92B0108C1A5265F10032333B /* the_governor.zom */,
+			);
+			name = "ZOM files";
+			sourceTree = "<group>";
+		};
+		92FE70701A4F35CC004A0B98 = {
+			isa = PBXGroup;
+			children = (
+				92FE707B1A4F35CC004A0B98 /* zombiewx-mac */,
+				92B010851A5265D60032333B /* ZOM files */,
+				92FE707A1A4F35CC004A0B98 /* Products */,
+				9201D3481A4F688200B0F91F /* CoreFoundation.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		92FE707A1A4F35CC004A0B98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92FE70791A4F35CC004A0B98 /* zombiewx-mac */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92FE707B1A4F35CC004A0B98 /* zombiewx-mac */ = {
+			isa = PBXGroup;
+			children = (
+				92296D741B86CE3D00FED746 /* Exceptions.h */,
+				92296D751B86CE3D00FED746 /* Machine.h */,
+				92296D761B86CE3D00FED746 /* Op.cpp */,
+				92296D771B86CE3D00FED746 /* Op.h */,
+				92296D781B86CE3D00FED746 /* Singleton.h */,
+				92296D791B86CE3D00FED746 /* Traits.h */,
+				92296D7A1B86CE3D00FED746 /* ZomApp.cpp */,
+				92296D7B1B86CE3D00FED746 /* ZomApp.h */,
+				92296D7C1B86CE3D00FED746 /* ZomDrawPanel.cpp */,
+				92296D7D1B86CE3D00FED746 /* ZomDrawPanel.h */,
+				92296D7E1B86CE3D00FED746 /* ZomFrame.cpp */,
+				92296D7F1B86CE3D00FED746 /* ZomFrame.h */,
+			);
+			path = "zombiewx-mac";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92FE70781A4F35CC004A0B98 /* zombiewx-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92FE70801A4F35CC004A0B98 /* Build configuration list for PBXNativeTarget "zombiewx-mac" */;
+			buildPhases = (
+				92FE70751A4F35CC004A0B98 /* Sources */,
+				92FE70761A4F35CC004A0B98 /* Frameworks */,
+				92FE70771A4F35CC004A0B98 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zombiewx-mac";
+			productName = "zombiewx-mac";
+			productReference = 92FE70791A4F35CC004A0B98 /* zombiewx-mac */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92FE70711A4F35CC004A0B98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Sanjay Madhav";
+				TargetAttributes = {
+					92FE70781A4F35CC004A0B98 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 92FE70741A4F35CC004A0B98 /* Build configuration list for PBXProject "zombiewx-mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 92FE70701A4F35CC004A0B98;
+			productRefGroup = 92FE707A1A4F35CC004A0B98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92FE70781A4F35CC004A0B98 /* zombiewx-mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92FE70751A4F35CC004A0B98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92296D811B86CE3D00FED746 /* ZomApp.cpp in Sources */,
+				92296D801B86CE3D00FED746 /* Op.cpp in Sources */,
+				92296D831B86CE3D00FED746 /* ZomFrame.cpp in Sources */,
+				92296D821B86CE3D00FED746 /* ZomDrawPanel.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		92FE707E1A4F35CC004A0B98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wno-potentially-evaluated-expression",
+					"-Wno-inconsistent-missing-override",
+				);
+			};
+			name = Debug;
+		};
+		92FE707F1A4F35CC004A0B98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wno-potentially-evaluated-expression",
+					"-Wno-inconsistent-missing-override",
+				);
+			};
+			name = Release;
+		};
+		92FE70811A4F35CC004A0B98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../wx/include",
+					"$(SRCROOT)/../wx/lib/osx_cocoa-unicode-3.1/",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../wx/lib";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				OTHER_LDFLAGS = (
+					"-lwx_osx_cocoau_core-3.1.0.0.0",
+					"-lwx_baseu-3.1.0.0.0",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		92FE70821A4F35CC004A0B98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../wx/include",
+					"$(SRCROOT)/../wx/lib/osx_cocoa-unicode-3.1/",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../wx/lib";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				OTHER_LDFLAGS = (
+					"-lwx_osx_cocoau_core-3.1.0.0.0",
+					"-lwx_baseu-3.1.0.0.0",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92FE70741A4F35CC004A0B98 /* Build configuration list for PBXProject "zombiewx-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92FE707E1A4F35CC004A0B98 /* Debug */,
+				92FE707F1A4F35CC004A0B98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92FE70801A4F35CC004A0B98 /* Build configuration list for PBXNativeTarget "zombiewx-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92FE70811A4F35CC004A0B98 /* Debug */,
+				92FE70821A4F35CC004A0B98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92FE70711A4F35CC004A0B98 /* Project object */;
+}

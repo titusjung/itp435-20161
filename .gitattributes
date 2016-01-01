@@ -1,0 +1,2 @@
+# FASTA files should always end in lf
+*.fasta text eol=lf

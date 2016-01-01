@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Input Files">
+      <UniqueIdentifier>{8c7a1f6c-7be7-4db4-8a89-8f9c52dc07cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DNAAlignDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DNAApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DNADrawPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DNAFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DNAAlignDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DNAApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DNADrawPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DNAFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\A1C1_Homo_sapiens.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\AKAP1_Homo_sapiens.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\ASIP_Homo_sapiens.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Bundibugyo_ebolavirus.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Reston_ebolavirus.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Small_Test1.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Small_Test2.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Sudan_ebolavirus.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Tai_Forset_ebolavirus.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\TAS2R16_Homo_sapiens.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\TAS2R16_Pan_troglodytes.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+    <None Include="data\Zaire_ebolavirus.fasta">
+      <Filter>Input Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+test_zombie,2 ; Daryl Dixon, the ultimate zombie killing machine
+je,13         ; Go to ranged attack
+test_zombie,1
+je,15         ; Go to melee attack
+test_passable
+je,17
+test_random
+je,11
+rotate,0
+goto,1
+rotate,1
+goto,1
+ranged_attack
+goto,1
+attack
+goto,1
+forward
+goto,1

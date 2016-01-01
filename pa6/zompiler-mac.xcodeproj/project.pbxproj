@@ -1,0 +1,340 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9295978F1A4E792C005EB005 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 929597861A4E792C005EB005 /* node.cpp */; };
+		929597901A4E792C005EB005 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 929597881A4E792C005EB005 /* parser.cpp */; settings = {COMPILER_FLAGS = "-Wno-unreachable-code"; }; };
+		929597911A4E792C005EB005 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9295978A1A4E792C005EB005 /* scanner.cpp */; settings = {COMPILER_FLAGS = "-Wno-deprecated-register -Wno-unused-function"; }; };
+		929597921A4E792C005EB005 /* zompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9295978C1A4E792C005EB005 /* zompiler.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9295977A1A4E78ED005EB005 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9295977C1A4E78ED005EB005 /* zompiler-mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "zompiler-mac"; sourceTree = BUILT_PRODUCTS_DIR; };
+		929597861A4E792C005EB005 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = SOURCE_ROOT; };
+		929597871A4E792C005EB005 /* node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = node.h; sourceTree = SOURCE_ROOT; };
+		929597881A4E792C005EB005 /* parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = SOURCE_ROOT; };
+		929597891A4E792C005EB005 /* parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = parser.hpp; sourceTree = SOURCE_ROOT; };
+		9295978A1A4E792C005EB005 /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = SOURCE_ROOT; };
+		9295978C1A4E792C005EB005 /* zompiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zompiler.cpp; sourceTree = SOURCE_ROOT; };
+		9295978D1A4E792C005EB005 /* zompiler.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = zompiler.l; sourceTree = SOURCE_ROOT; };
+		9295978E1A4E792C005EB005 /* zompiler.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = zompiler.y; sourceTree = SOURCE_ROOT; };
+		92C2E5591A4EAFDE0054B61C /* basic.zc */ = {isa = PBXFileReference; lastKnownFileType = text; name = basic.zc; path = input/basic.zc; sourceTree = "<group>"; };
+		92C2E55B1A4EAFDE0054B61C /* michonne.zc */ = {isa = PBXFileReference; lastKnownFileType = text; name = michonne.zc; path = input/michonne.zc; sourceTree = "<group>"; };
+		92C2E55C1A4EAFDE0054B61C /* search.zc */ = {isa = PBXFileReference; lastKnownFileType = text; name = search.zc; path = input/search.zc; sourceTree = "<group>"; };
+		92C2E55D1A4EAFDE0054B61C /* stationary.zc */ = {isa = PBXFileReference; lastKnownFileType = text; name = stationary.zc; path = input/stationary.zc; sourceTree = "<group>"; };
+		92C2E55E1A4EAFDE0054B61C /* the_governor.zc */ = {isa = PBXFileReference; lastKnownFileType = text; name = the_governor.zc; path = input/the_governor.zc; sourceTree = "<group>"; };
+		92C2E55F1A4EAFDE0054B61C /* two_statements.zc */ = {isa = PBXFileReference; lastKnownFileType = text; name = two_statements.zc; path = input/two_statements.zc; sourceTree = "<group>"; };
+		92C2E5611A4EB0200054B61C /* basic.out.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = basic.out.zom; path = output/basic.out.zom; sourceTree = "<group>"; };
+		92C2E5631A4EB0200054B61C /* michonne.optimized.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = michonne.optimized.zom; path = output/michonne.optimized.zom; sourceTree = "<group>"; };
+		92C2E5641A4EB0200054B61C /* michonne.out.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = michonne.out.zom; path = output/michonne.out.zom; sourceTree = "<group>"; };
+		92C2E5651A4EB0200054B61C /* search.out.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = search.out.zom; path = output/search.out.zom; sourceTree = "<group>"; };
+		92C2E5661A4EB0200054B61C /* stationary.out.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = stationary.out.zom; path = output/stationary.out.zom; sourceTree = "<group>"; };
+		92C2E5671A4EB0200054B61C /* the_governor.out.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = the_governor.out.zom; path = output/the_governor.out.zom; sourceTree = "<group>"; };
+		92C2E5681A4EB0200054B61C /* two_statements.out.zom */ = {isa = PBXFileReference; lastKnownFileType = text; name = two_statements.out.zom; path = output/two_statements.out.zom; sourceTree = "<group>"; };
+		92CC19961B86C4A800908EC4 /* the_governor.optimized.zom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = the_governor.optimized.zom; path = output/the_governor.optimized.zom; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		929597791A4E78ED005EB005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		929597731A4E78ED005EB005 = {
+			isa = PBXGroup;
+			children = (
+				9295977E1A4E78ED005EB005 /* Source */,
+				92C2E5581A4EAFB70054B61C /* Input Files */,
+				92C2E5601A4EB0070054B61C /* Expected Output */,
+				9295977D1A4E78ED005EB005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9295977D1A4E78ED005EB005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9295977C1A4E78ED005EB005 /* zompiler-mac */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9295977E1A4E78ED005EB005 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				929597861A4E792C005EB005 /* node.cpp */,
+				929597871A4E792C005EB005 /* node.h */,
+				929597881A4E792C005EB005 /* parser.cpp */,
+				929597891A4E792C005EB005 /* parser.hpp */,
+				9295978A1A4E792C005EB005 /* scanner.cpp */,
+				9295978C1A4E792C005EB005 /* zompiler.cpp */,
+				9295978D1A4E792C005EB005 /* zompiler.l */,
+				9295978E1A4E792C005EB005 /* zompiler.y */,
+			);
+			name = Source;
+			path = "zompiler-mac";
+			sourceTree = "<group>";
+		};
+		92C2E5581A4EAFB70054B61C /* Input Files */ = {
+			isa = PBXGroup;
+			children = (
+				92C2E5591A4EAFDE0054B61C /* basic.zc */,
+				92C2E55B1A4EAFDE0054B61C /* michonne.zc */,
+				92C2E55C1A4EAFDE0054B61C /* search.zc */,
+				92C2E55D1A4EAFDE0054B61C /* stationary.zc */,
+				92C2E55E1A4EAFDE0054B61C /* the_governor.zc */,
+				92C2E55F1A4EAFDE0054B61C /* two_statements.zc */,
+			);
+			name = "Input Files";
+			sourceTree = "<group>";
+		};
+		92C2E5601A4EB0070054B61C /* Expected Output */ = {
+			isa = PBXGroup;
+			children = (
+				92C2E5611A4EB0200054B61C /* basic.out.zom */,
+				92C2E5631A4EB0200054B61C /* michonne.optimized.zom */,
+				92C2E5641A4EB0200054B61C /* michonne.out.zom */,
+				92C2E5651A4EB0200054B61C /* search.out.zom */,
+				92C2E5661A4EB0200054B61C /* stationary.out.zom */,
+				92CC19961B86C4A800908EC4 /* the_governor.optimized.zom */,
+				92C2E5671A4EB0200054B61C /* the_governor.out.zom */,
+				92C2E5681A4EB0200054B61C /* two_statements.out.zom */,
+			);
+			name = "Expected Output";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9295977B1A4E78ED005EB005 /* zompiler-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 929597831A4E78ED005EB005 /* Build configuration list for PBXNativeTarget "zompiler-mac" */;
+			buildPhases = (
+				929597961A4E79E8005EB005 /* ShellScript */,
+				929597971A4E7B4E005EB005 /* Run Script */,
+				929597781A4E78ED005EB005 /* Sources */,
+				929597791A4E78ED005EB005 /* Frameworks */,
+				9295977A1A4E78ED005EB005 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zompiler-mac";
+			productName = "zompiler-mac";
+			productReference = 9295977C1A4E78ED005EB005 /* zompiler-mac */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		929597741A4E78ED005EB005 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Sanjay Madhav";
+				TargetAttributes = {
+					9295977B1A4E78ED005EB005 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 929597771A4E78ED005EB005 /* Build configuration list for PBXProject "zompiler-mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 929597731A4E78ED005EB005;
+			productRefGroup = 9295977D1A4E78ED005EB005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9295977B1A4E78ED005EB005 /* zompiler-mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		929597961A4E79E8005EB005 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "flex -oscanner.cpp -Pzompiler -Cem zompiler.l";
+		};
+		929597971A4E7B4E005EB005 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bison -d -b zompiler -o parser.cpp -p zompiler zompiler.y";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		929597781A4E78ED005EB005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				929597901A4E792C005EB005 /* parser.cpp in Sources */,
+				929597911A4E792C005EB005 /* scanner.cpp in Sources */,
+				9295978F1A4E792C005EB005 /* node.cpp in Sources */,
+				929597921A4E792C005EB005 /* zompiler.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		929597811A4E78ED005EB005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		929597821A4E78ED005EB005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		929597841A4E78ED005EB005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		929597851A4E78ED005EB005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		929597771A4E78ED005EB005 /* Build configuration list for PBXProject "zompiler-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				929597811A4E78ED005EB005 /* Debug */,
+				929597821A4E78ED005EB005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		929597831A4E78ED005EB005 /* Build configuration list for PBXNativeTarget "zompiler-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				929597841A4E78ED005EB005 /* Debug */,
+				929597851A4E78ED005EB005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 929597741A4E78ED005EB005 /* Project object */;
+}

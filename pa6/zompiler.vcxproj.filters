@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DO NOT EDIT">
+      <UniqueIdentifier>{65af44ae-0d14-4b04-82ef-d2dbb6818d41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ZombieC Files">
+      <UniqueIdentifier>{686a138d-0290-4ab1-9e50-f4a0db1cbc86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ZombieC Files\Input">
+      <UniqueIdentifier>{755fb286-ff7d-44a2-a91e-332869eac9f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ZombieC Files\Output">
+      <UniqueIdentifier>{1647c08f-355b-4c53-be20-9df389dbec9f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.hpp">
+      <Filter>DO NOT EDIT</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="zompiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>DO NOT EDIT</Filter>
+    </ClCompile>
+    <ClCompile Include="scanner.cpp">
+      <Filter>DO NOT EDIT</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <BisonParser Include="zompiler.y">
+      <Filter>Source Files</Filter>
+    </BisonParser>
+  </ItemGroup>
+  <ItemGroup>
+    <FlexGenerator Include="zompiler.l">
+      <Filter>Source Files</Filter>
+    </FlexGenerator>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="input\basic.zc">
+      <Filter>ZombieC Files\Input</Filter>
+    </None>
+    <None Include="input\michonne.zc">
+      <Filter>ZombieC Files\Input</Filter>
+    </None>
+    <None Include="input\search.zc">
+      <Filter>ZombieC Files\Input</Filter>
+    </None>
+    <None Include="input\stationary.zc">
+      <Filter>ZombieC Files\Input</Filter>
+    </None>
+    <None Include="input\the_governor.zc">
+      <Filter>ZombieC Files\Input</Filter>
+    </None>
+    <None Include="input\two_statements.zc">
+      <Filter>ZombieC Files\Input</Filter>
+    </None>
+    <None Include="output\basic.out.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\michonne.optimized.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\michonne.out.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\search.out.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\stationary.out.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\the_governor.out.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\two_statements.out.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+    <None Include="output\the_governor.optimized.zom">
+      <Filter>ZombieC Files\Output</Filter>
+    </None>
+  </ItemGroup>
+</Project>

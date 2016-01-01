@@ -1,0 +1,47 @@
+main_loop
+{
+	// Lots of spaghetti code
+	if (is_zombie(2))
+	{
+		ranged_attack();
+	}
+	else
+	{
+		if (is_zombie(1))
+		{
+			attack();
+		}
+		else
+		{
+			if (is_human(2))
+			{
+				ranged_attack();
+			}
+			else
+			{
+				if (is_human(1))
+				{
+					attack();
+				}
+				else
+				{
+					if (is_passable())
+					{
+						forward();
+					}
+					else
+					{
+						if (is_random())
+						{
+							rotate(1);
+						}
+						else
+						{
+							rotate(0);
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,6 @@
+test_human,1
+je,5
+rotate,0
+goto,6
+attack
+goto,1

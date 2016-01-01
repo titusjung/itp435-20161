@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		92296D6F1B86CE0800FED746 /* DNAAlignDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D641B86CE0800FED746 /* DNAAlignDlg.cpp */; };
+		92296D701B86CE0800FED746 /* DNAApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D661B86CE0800FED746 /* DNAApp.cpp */; };
+		92296D711B86CE0800FED746 /* DNADrawPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D681B86CE0800FED746 /* DNADrawPanel.cpp */; };
+		92296D721B86CE0800FED746 /* DNAFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D6A1B86CE0800FED746 /* DNAFrame.cpp */; };
+		92296D731B86CE0800FED746 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D6D1B86CE0800FED746 /* Timer.cpp */; };
+		92F34CA11A5200F300A998AC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F34CA01A5200F300A998AC /* CoreFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92F34C941A5200BC00A998AC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		92296D641B86CE0800FED746 /* DNAAlignDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DNAAlignDlg.cpp; sourceTree = SOURCE_ROOT; };
+		92296D651B86CE0800FED746 /* DNAAlignDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAAlignDlg.h; sourceTree = SOURCE_ROOT; };
+		92296D661B86CE0800FED746 /* DNAApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DNAApp.cpp; sourceTree = SOURCE_ROOT; };
+		92296D671B86CE0800FED746 /* DNAApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAApp.h; sourceTree = SOURCE_ROOT; };
+		92296D681B86CE0800FED746 /* DNADrawPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DNADrawPanel.cpp; sourceTree = SOURCE_ROOT; };
+		92296D691B86CE0800FED746 /* DNADrawPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNADrawPanel.h; sourceTree = SOURCE_ROOT; };
+		92296D6A1B86CE0800FED746 /* DNAFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DNAFrame.cpp; sourceTree = SOURCE_ROOT; };
+		92296D6B1B86CE0800FED746 /* DNAFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAFrame.h; sourceTree = SOURCE_ROOT; };
+		92296D6C1B86CE0800FED746 /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = SOURCE_ROOT; };
+		92296D6D1B86CE0800FED746 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = SOURCE_ROOT; };
+		92296D6E1B86CE0800FED746 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = SOURCE_ROOT; };
+		923E92A01A55DE5400F27EBA /* Small_Test1.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Small_Test1.fasta; path = data/Small_Test1.fasta; sourceTree = "<group>"; };
+		923E92A11A55DE5400F27EBA /* Small_Test2.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Small_Test2.fasta; path = data/Small_Test2.fasta; sourceTree = "<group>"; };
+		92B010911A53B96C0032333B /* A1C1_Homo_sapiens.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = A1C1_Homo_sapiens.fasta; path = data/A1C1_Homo_sapiens.fasta; sourceTree = "<group>"; };
+		92B010921A53B96C0032333B /* AKAP1_Homo_sapiens.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = AKAP1_Homo_sapiens.fasta; path = data/AKAP1_Homo_sapiens.fasta; sourceTree = "<group>"; };
+		92B010941A53B96C0032333B /* ASIP_Homo_sapiens.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = ASIP_Homo_sapiens.fasta; path = data/ASIP_Homo_sapiens.fasta; sourceTree = "<group>"; };
+		92B010951A53B96C0032333B /* Bundibugyo_ebolavirus.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Bundibugyo_ebolavirus.fasta; path = data/Bundibugyo_ebolavirus.fasta; sourceTree = "<group>"; };
+		92B010961A53B96C0032333B /* Reston_ebolavirus.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Reston_ebolavirus.fasta; path = data/Reston_ebolavirus.fasta; sourceTree = "<group>"; };
+		92B010971A53B96C0032333B /* Sudan_ebolavirus.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Sudan_ebolavirus.fasta; path = data/Sudan_ebolavirus.fasta; sourceTree = "<group>"; };
+		92B010981A53B96C0032333B /* Tai_Forset_ebolavirus.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tai_Forset_ebolavirus.fasta; path = data/Tai_Forset_ebolavirus.fasta; sourceTree = "<group>"; };
+		92B010991A53B96C0032333B /* TAS2R16_Homo_sapiens.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = TAS2R16_Homo_sapiens.fasta; path = data/TAS2R16_Homo_sapiens.fasta; sourceTree = "<group>"; };
+		92B0109A1A53B96C0032333B /* TAS2R16_Pan_troglodytes.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = TAS2R16_Pan_troglodytes.fasta; path = data/TAS2R16_Pan_troglodytes.fasta; sourceTree = "<group>"; };
+		92B0109B1A53B96C0032333B /* Zaire_ebolavirus.fasta */ = {isa = PBXFileReference; lastKnownFileType = text; name = Zaire_ebolavirus.fasta; path = data/Zaire_ebolavirus.fasta; sourceTree = "<group>"; };
+		92F34C961A5200BC00A998AC /* dnawx-mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "dnawx-mac"; sourceTree = BUILT_PRODUCTS_DIR; };
+		92F34CA01A5200F300A998AC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92F34C931A5200BC00A998AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92F34CA11A5200F300A998AC /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92B010901A53B9420032333B /* Data Files */ = {
+			isa = PBXGroup;
+			children = (
+				92B010911A53B96C0032333B /* A1C1_Homo_sapiens.fasta */,
+				92B010921A53B96C0032333B /* AKAP1_Homo_sapiens.fasta */,
+				92B010941A53B96C0032333B /* ASIP_Homo_sapiens.fasta */,
+				92B010951A53B96C0032333B /* Bundibugyo_ebolavirus.fasta */,
+				92B010961A53B96C0032333B /* Reston_ebolavirus.fasta */,
+				923E92A01A55DE5400F27EBA /* Small_Test1.fasta */,
+				923E92A11A55DE5400F27EBA /* Small_Test2.fasta */,
+				92B010971A53B96C0032333B /* Sudan_ebolavirus.fasta */,
+				92B010981A53B96C0032333B /* Tai_Forset_ebolavirus.fasta */,
+				92B010991A53B96C0032333B /* TAS2R16_Homo_sapiens.fasta */,
+				92B0109A1A53B96C0032333B /* TAS2R16_Pan_troglodytes.fasta */,
+				92B0109B1A53B96C0032333B /* Zaire_ebolavirus.fasta */,
+			);
+			name = "Data Files";
+			sourceTree = "<group>";
+		};
+		92F34C8D1A5200BC00A998AC = {
+			isa = PBXGroup;
+			children = (
+				92F34C981A5200BC00A998AC /* dnawx-mac */,
+				92B010901A53B9420032333B /* Data Files */,
+				92F34C971A5200BC00A998AC /* Products */,
+				92F34CA01A5200F300A998AC /* CoreFoundation.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		92F34C971A5200BC00A998AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92F34C961A5200BC00A998AC /* dnawx-mac */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92F34C981A5200BC00A998AC /* dnawx-mac */ = {
+			isa = PBXGroup;
+			children = (
+				92296D641B86CE0800FED746 /* DNAAlignDlg.cpp */,
+				92296D651B86CE0800FED746 /* DNAAlignDlg.h */,
+				92296D661B86CE0800FED746 /* DNAApp.cpp */,
+				92296D671B86CE0800FED746 /* DNAApp.h */,
+				92296D681B86CE0800FED746 /* DNADrawPanel.cpp */,
+				92296D691B86CE0800FED746 /* DNADrawPanel.h */,
+				92296D6A1B86CE0800FED746 /* DNAFrame.cpp */,
+				92296D6B1B86CE0800FED746 /* DNAFrame.h */,
+				92296D6C1B86CE0800FED746 /* Exceptions.h */,
+				92296D6D1B86CE0800FED746 /* Timer.cpp */,
+				92296D6E1B86CE0800FED746 /* Timer.h */,
+			);
+			path = "dnawx-mac";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92F34C951A5200BC00A998AC /* dnawx-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92F34C9D1A5200BC00A998AC /* Build configuration list for PBXNativeTarget "dnawx-mac" */;
+			buildPhases = (
+				92F34C921A5200BC00A998AC /* Sources */,
+				92F34C931A5200BC00A998AC /* Frameworks */,
+				92F34C941A5200BC00A998AC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "dnawx-mac";
+			productName = "dnawx-mac";
+			productReference = 92F34C961A5200BC00A998AC /* dnawx-mac */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92F34C8E1A5200BC00A998AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Sanjay Madhav";
+				TargetAttributes = {
+					92F34C951A5200BC00A998AC = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 92F34C911A5200BC00A998AC /* Build configuration list for PBXProject "dnawx-mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 92F34C8D1A5200BC00A998AC;
+			productRefGroup = 92F34C971A5200BC00A998AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92F34C951A5200BC00A998AC /* dnawx-mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92F34C921A5200BC00A998AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92296D711B86CE0800FED746 /* DNADrawPanel.cpp in Sources */,
+				92296D6F1B86CE0800FED746 /* DNAAlignDlg.cpp in Sources */,
+				92296D701B86CE0800FED746 /* DNAApp.cpp in Sources */,
+				92296D731B86CE0800FED746 /* Timer.cpp in Sources */,
+				92296D721B86CE0800FED746 /* DNAFrame.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		92F34C9B1A5200BC00A998AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wno-potentially-evaluated-expression",
+					"-Wno-inconsistent-missing-override",
+				);
+			};
+			name = Debug;
+		};
+		92F34C9C1A5200BC00A998AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Wno-potentially-evaluated-expression",
+					"-Wno-inconsistent-missing-override",
+				);
+			};
+			name = Release;
+		};
+		92F34C9E1A5200BC00A998AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../wx/include",
+					"$(SRCROOT)/../wx/lib/osx_cocoa-unicode-3.1/",
+					"$(SRCROOT)/../tbb/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../wx/lib",
+					"$(SRCROOT)/../tbb/lib",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				OTHER_LDFLAGS = (
+					"-lwx_osx_cocoau_core-3.1.0.0.0",
+					"-lwx_baseu-3.1.0.0.0",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		92F34C9F1A5200BC00A998AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../wx/include",
+					"$(SRCROOT)/../wx/lib/osx_cocoa-unicode-3.1/",
+					"$(SRCROOT)/../tbb/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../wx/lib",
+					"$(SRCROOT)/../tbb/lib",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-D_FILE_OFFSET_BITS=64",
+					"-DWXUSINGDLL",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+				);
+				OTHER_LDFLAGS = (
+					"-lwx_osx_cocoau_core-3.1.0.0.0",
+					"-lwx_baseu-3.1.0.0.0",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92F34C911A5200BC00A998AC /* Build configuration list for PBXProject "dnawx-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92F34C9B1A5200BC00A998AC /* Debug */,
+				92F34C9C1A5200BC00A998AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92F34C9D1A5200BC00A998AC /* Build configuration list for PBXNativeTarget "dnawx-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92F34C9E1A5200BC00A998AC /* Debug */,
+				92F34C9F1A5200BC00A998AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92F34C8E1A5200BC00A998AC /* Project object */;
+}

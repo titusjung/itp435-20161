@@ -1,0 +1,14 @@
+test_zombie,1 ; Michonne only uses melee attacks.
+je,13
+test_passable
+je,11
+test_random
+je,9
+rotate,0
+goto,1
+rotate,1
+goto,1
+forward
+goto,1
+attack
+goto,1

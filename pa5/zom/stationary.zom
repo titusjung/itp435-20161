@@ -1,0 +1,6 @@
+test_human,1; Is this a human?
+je,5        ; If so, jump to line 5
+rotate,0    ; Rotate clockwise
+goto,1      ; Goto line 1
+attack      ; Try to eat the human!
+goto,1      ; Goto line 1

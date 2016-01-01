@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zompiler", "zompiler.vcxproj", "{C18DCBC2-2C38-4D6A-A6B3-8219C36F594A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C18DCBC2-2C38-4D6A-A6B3-8219C36F594A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C18DCBC2-2C38-4D6A-A6B3-8219C36F594A}.Debug|Win32.Build.0 = Debug|Win32
+		{C18DCBC2-2C38-4D6A-A6B3-8219C36F594A}.Release|Win32.ActiveCfg = Release|Win32
+		{C18DCBC2-2C38-4D6A-A6B3-8219C36F594A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

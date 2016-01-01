@@ -1,0 +1,14 @@
+test_human,1
+je,13
+test_passable
+je,11
+test_random
+je,9
+rotate,0
+goto,10
+rotate,1
+goto,12
+forward
+goto,14
+attack
+goto,1

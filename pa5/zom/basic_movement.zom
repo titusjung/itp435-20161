@@ -1,0 +1,10 @@
+test_wall ; Comment here!!
+je,5
+forward
+goto,1
+test_random
+je,9
+rotate,0
+goto,1
+rotate,1
+goto,1

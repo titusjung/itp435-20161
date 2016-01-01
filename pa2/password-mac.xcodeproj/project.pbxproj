@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		92296D611B86CDDA00FED746 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D5C1B86CDDA00FED746 /* Main.cpp */; };
+		92296D621B86CDDA00FED746 /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D5D1B86CDDA00FED746 /* Sha1.cpp */; };
+		92296D631B86CDDA00FED746 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92296D5F1B86CDDA00FED746 /* Timer.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		929597581A4E53A4005EB005 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		92296D5C1B86CDDA00FED746 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = SOURCE_ROOT; };
+		92296D5D1B86CDDA00FED746 /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sha1.cpp; sourceTree = SOURCE_ROOT; };
+		92296D5E1B86CDDA00FED746 /* Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sha1.h; sourceTree = SOURCE_ROOT; };
+		92296D5F1B86CDDA00FED746 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = SOURCE_ROOT; };
+		92296D601B86CDDA00FED746 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = SOURCE_ROOT; };
+		9295975A1A4E53A4005EB005 /* password-mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "password-mac"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		929597571A4E53A4005EB005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		929597511A4E53A4005EB005 = {
+			isa = PBXGroup;
+			children = (
+				9295975C1A4E53A4005EB005 /* password-mac */,
+				9295975B1A4E53A4005EB005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9295975B1A4E53A4005EB005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9295975A1A4E53A4005EB005 /* password-mac */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9295975C1A4E53A4005EB005 /* password-mac */ = {
+			isa = PBXGroup;
+			children = (
+				92296D5C1B86CDDA00FED746 /* Main.cpp */,
+				92296D5D1B86CDDA00FED746 /* Sha1.cpp */,
+				92296D5E1B86CDDA00FED746 /* Sha1.h */,
+				92296D5F1B86CDDA00FED746 /* Timer.cpp */,
+				92296D601B86CDDA00FED746 /* Timer.h */,
+			);
+			path = "password-mac";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		929597591A4E53A4005EB005 /* password-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 929597611A4E53A4005EB005 /* Build configuration list for PBXNativeTarget "password-mac" */;
+			buildPhases = (
+				929597561A4E53A4005EB005 /* Sources */,
+				929597571A4E53A4005EB005 /* Frameworks */,
+				929597581A4E53A4005EB005 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "password-mac";
+			productName = "password-mac";
+			productReference = 9295975A1A4E53A4005EB005 /* password-mac */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		929597521A4E53A4005EB005 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Sanjay Madhav";
+				TargetAttributes = {
+					929597591A4E53A4005EB005 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 929597551A4E53A4005EB005 /* Build configuration list for PBXProject "password-mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 929597511A4E53A4005EB005;
+			productRefGroup = 9295975B1A4E53A4005EB005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				929597591A4E53A4005EB005 /* password-mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		929597561A4E53A4005EB005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92296D631B86CDDA00FED746 /* Timer.cpp in Sources */,
+				92296D621B86CDDA00FED746 /* Sha1.cpp in Sources */,
+				92296D611B86CDDA00FED746 /* Main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9295975F1A4E53A4005EB005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		929597601A4E53A4005EB005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		929597621A4E53A4005EB005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../tbb/include",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../tbb/lib";
+				OTHER_LDFLAGS = "-ltbb";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		929597631A4E53A4005EB005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../tbb/include",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../tbb/lib";
+				OTHER_LDFLAGS = "-ltbb";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		929597551A4E53A4005EB005 /* Build configuration list for PBXProject "password-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9295975F1A4E53A4005EB005 /* Debug */,
+				929597601A4E53A4005EB005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		929597611A4E53A4005EB005 /* Build configuration list for PBXNativeTarget "password-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				929597621A4E53A4005EB005 /* Debug */,
+				929597631A4E53A4005EB005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 929597521A4E53A4005EB005 /* Project object */;
+}

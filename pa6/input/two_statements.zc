@@ -1,0 +1,5 @@
+main_loop
+{
+	rotate(0);
+	forward();
+}
