@@ -1,8 +1,8 @@
 # ITP 435 Labs - Spring 2016 #
 
 ### PUT YOUR INFO HERE ###
-Name: Tommy Trojan
+Name: Titus Jung
 
-Email: ttrojan@usc.edu
+Email: titusjun@usc.edu
 
 Platform: (PC or Mac)
