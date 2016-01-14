@@ -5,4 +5,4 @@ Name: Titus Jung
 
 Email: titusjun@usc.edu
 
-Platform: (PC or Mac)
+Platform: PC
