@@ -6,19 +6,23 @@ void RleData::Compress(const char* input, size_t inSize)
 	char*  temp = new char[inSize];
 
 	int charPos=1;
-	int numPos=0; 
+	
+	int numberOfChars=0;
 	char currChar; 
-	char prevChar = input[numPos];
-	for (int i = 1; i < inSize; i++)
+	char prevChar = input[0];
+	for (unsigned int i = 1; i < inSize; i++)
 	{
 		currChar = input[i]; 
 		if (currChar == prevChar)
 		{
-
+			numberOfChars++; 
 		}
 		else
 		{
-
+			temp[i - 1] = numberOfChars;
+			temp[i] = prevChar; 
+			prevChar = currChar;
+			numberOfChars = 0; 
 		}
 	}
 
