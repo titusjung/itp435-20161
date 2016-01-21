@@ -24,8 +24,27 @@ public:
 	{
 		TEST_CASE_DESCRIBE(testBasicPositiveRuns, "Basic positive runs test");
 		// TODO: Add more Compression test cases
+		TEST_CASE_DESCRIBE(testUniqueLettersRuns, "Basic unique letters");
+
+		//TEST_CASE_DESCRIBE(testUniqueAndRepeatedRuns, "Basic unique letters");
+
+		//TEST_CASE_DESCRIBE(testLongPosRun, "Basic unique letters");
+
+	//	TEST_CASE_DESCRIBE(testLongNegRun, "Basic unique letters");
+
+	//	TEST_CASE_DESCRIBE(testAlternatingRun, "Basic unique letters");
+
+		//TEST_CASE_DESCRIBE(testBeyondMax, "Basic unique letters");
+
+
+
 	}
-	
+	void testUniqueLettersRuns()
+	{
+		char test[] = "abcdefg";
+		char expected[] = "\xf9" "abcdefg";
+		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
+	}
 	void testBasicPositiveRuns()
 	{
 		char test[] = "aaabbbcccdddaaabbbcccdddaaabbbcccdddaaabbbc"
@@ -40,6 +59,7 @@ public:
 			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d";
 		
 		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
+	
 	}
 };
 
@@ -95,8 +115,11 @@ void runCompressionTest(char* test, size_t testSize,
 {
 	RleData r;
 	r.Compress(test, testSize);
+	std::cout <<std::endl<< "compression string is " << r << std::endl;
+	std::cout << "compressed size is " << r.mSize << " expected size is " << expectedSize << std::endl; 
 	ASSERT_TEST_MESSAGE(buffersAreSame(expected, r.mData, expectedSize),
 		"Buffer mismatch (see above for details)");
+
 }
 
 void runDecompressionTest(char* test, size_t testSize,

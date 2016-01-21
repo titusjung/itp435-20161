@@ -1,16 +1,17 @@
 #include "RleData.h"
-
+#include <iostream>
 void RleData::Compress(const char* input, size_t inSize)
 {
 	// TODO
-	char*  temp = new char[inSize];
+	char*  temp = new char[MaxRunSize()];
 
 	int charPos=1;
 	
-	int numberOfChars=0;
+	int numberOfChars=1;
 	char currChar; 
 	char prevChar = input[0];
-	for (unsigned int i = 1; i < inSize; i++)
+	int sizeCompressed = 0; 
+	for (size_t i = 1; i <= inSize; i++)
 	{
 		currChar = input[i]; 
 		if (currChar == prevChar)
@@ -19,11 +20,21 @@ void RleData::Compress(const char* input, size_t inSize)
 		}
 		else
 		{
-			temp[i - 1] = numberOfChars;
-			temp[i] = prevChar; 
+			temp[charPos - 1] = numberOfChars;
+			temp[charPos] = prevChar;
+			//std::cout << "at index "<< charPos -1<<" inserting " << numberOfChars << prevChar << std::endl;
+			charPos+=2; 
 			prevChar = currChar;
-			numberOfChars = 0; 
+			numberOfChars = 1; 
+			sizeCompressed += 2; 
 		}
+	}
+	mSize = sizeCompressed; 
+	mData = new char[sizeCompressed];
+	for ( int i = 0; i < sizeCompressed; i++)
+	{
+		mData[i] = temp[i]; 
+		//if (i == 62) std::cout <<"at 62 "<< std::hex << mData[i] << std::endl; 
 	}
 
 	delete[] temp; 
