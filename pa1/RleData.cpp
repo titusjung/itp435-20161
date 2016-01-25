@@ -6,103 +6,113 @@
 void RleData::Compress(const char* input, size_t inSize)
 {
 	// TODO
-	char*  temp = new char[MaxRunSize()];
+	std::string debugString = ""; 
+
+	std::vector<char> charStor;
+	std::vector<char> uniqueStor; 
+	bool searchUniques = true;
 	
-
-	std::string debugStor =""; 
-	std::string uniqueBuff =""; 
-	int charPos=1;
-	int numberOfRepeats=1;
-	char currChar; 
 	char prevChar = input[0];
-	int sizeCompressed = 0; 
-	bool lookingForUnique = false; 
-	int nUniqueLett = 0; 
-	for (size_t i = 1; i <= inSize; i++)
-	{
-		currChar = input[i]; 
-		if (currChar == prevChar)
-		{
-			numberOfRepeats++; 
-			
-			if (lookingForUnique)
-			{
-				temp[charPos - 1] = ~nUniqueLett + 1;
-				debugStor.append(std::to_string(-nUniqueLett)); 
-				std::cout << std::endl<< "Number of unique letters  is " << nUniqueLett << std::endl;
-				for (unsigned int i = 0; i < uniqueBuff.size(); i++)
-				{
-					temp[charPos +i] = uniqueBuff.at(i);
-				}
-				debugStor.append(uniqueBuff); 
-				charPos += uniqueBuff.size(); 
-				nUniqueLett = 0;
-				uniqueBuff = ""; 
-			}
-			lookingForUnique = false;
-			
-		}
-		else
-		{
-			if (numberOfRepeats > 1)
-			{
-				temp[charPos - 1] = numberOfRepeats;
-				temp[charPos] = prevChar;
-				debugStor.append(std::to_string(numberOfRepeats));
-				debugStor += prevChar; 
-				charPos += 2;
-				prevChar = currChar;
-				numberOfRepeats = 1;
-				sizeCompressed += 2;
-				//lookingForUnique = true;
+	char currChar;
+	uniqueStor.push_back(prevChar);
 
-			}
-			else if (!lookingForUnique)
+	int numberOfRepeats = 0;
+	int numberOfUniques = 0; 
+	for (size_t i = 1; i < inSize; i++)
+	{
+		currChar = input[i];
+
+		if (searchUniques)
+		{
+
+			if (currChar == prevChar)
 			{
-				uniqueBuff = uniqueBuff+prevChar + currChar;
-				numberOfRepeats = 2;
-				nUniqueLett = 2; 
-				lookingForUnique = true;
+				searchUniques = false;
+				if (uniqueStor.size()>1)
+				{
+					uniqueStor.pop_back();
+					int size = -static_cast<int>(uniqueStor.size());
+					charStor.push_back(size);
+					charStor.insert(charStor.end(), uniqueStor.begin(), uniqueStor.end());
+			
+					debugString.append(std::to_string(size));
+					for (unsigned int j = 0; j < uniqueStor.size(); j++)
+					{
+						debugString += uniqueStor.at(j);
+					}
+				
+				}
+				numberOfUniques = 0;
+				numberOfRepeats = 2; 
+				uniqueStor.clear(); 
 			}
 			else
 			{
-				uniqueBuff = uniqueBuff + currChar; 
-				numberOfRepeats++;
-				nUniqueLett++; 
-
-				std::cout <<"unique buff is "<< uniqueBuff << std::endl; 
+				numberOfUniques++;
+				uniqueStor.push_back(currChar); 
 			}
-			
-		}
-	}
-	if (lookingForUnique)
-	{
-		temp[charPos - 1] = ~nUniqueLett+1;
-		std::cout << std::endl << "Number of unique letters  is " << std::hex<< static_cast<unsigned>(temp[charPos - 1]) << std::dec<< std::endl;
-		debugStor.append(std::to_string(-nUniqueLett));
 
-		for (unsigned int i = 0; i < uniqueBuff.size(); i++)
+		}
+
+		else
 		{
-			temp[charPos + i] = uniqueBuff.at(i);
+			if (currChar == prevChar)
+			{
+				numberOfRepeats++; 
+				uniqueStor.clear(); 
+			}
+			else
+			{
+				numberOfUniques = 1; 
+				searchUniques = true; 
+				charStor.push_back(numberOfRepeats); 
+				charStor.push_back(prevChar); 
+
+				debugString.append(std::to_string(numberOfRepeats));
+				debugString += prevChar; 
+
+				numberOfRepeats = 0; 
+				uniqueStor.clear();
+
+				uniqueStor.push_back(currChar);
+			}
 		}
-		debugStor.append(uniqueBuff);
 
-		charPos += uniqueBuff.size();
-		nUniqueLett = 0;
-		uniqueBuff = "";
+		if (i == inSize-1 && searchUniques)
+		{
+			if ((!uniqueStor.empty()))
+			{
+				int size = -static_cast<int>(uniqueStor.size());
+
+				charStor.push_back(size);
+				charStor.insert(charStor.end(), uniqueStor.begin(), uniqueStor.end());
+
+				debugString.append(std::to_string(size));
+				for (unsigned int j = 0; j < uniqueStor.size(); j++)
+				{
+					debugString += uniqueStor.at(j);
+				}
+			}
+		}
+		else if (i == inSize-1 && (!searchUniques))
+		{
+			charStor.push_back(numberOfRepeats);
+			charStor.push_back(prevChar);
+
+			debugString.append(std::to_string(numberOfRepeats));
+			debugString += prevChar;
+		}
+		prevChar = currChar; 
 	}
 
-	mSize = sizeCompressed; 
-	mData = new char[sizeCompressed];
+	mData = new char[charStor.size()];
 
-	std::cout << "compressed string is " << debugStor << std::endl; 
-	for ( int i = 0; i < sizeCompressed; i++)
+	for (unsigned int i = 0; i < charStor.size(); i++)
 	{
-		mData[i] = temp[i]; 
-		//if (i == 62) std::cout <<"at 62 "<< std::hex << mData[i] << std::endl; 
+		mData[i] = charStor[i]; 
 	}
+	std::cout << std::endl << "compressed String is " << debugString << std::endl;
 
-	delete[] temp; 
 }
 
 void RleData::Decompress(const char* input, size_t inSize, size_t outSize)
