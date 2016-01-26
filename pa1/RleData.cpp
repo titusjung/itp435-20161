@@ -6,6 +6,7 @@
 void RleData::Compress(const char* input, size_t inSize)
 {
 	// TODO
+	delete[] mData; 
 	std::string debugString = ""; 
 
 	std::vector<char> charStor;
@@ -17,9 +18,10 @@ void RleData::Compress(const char* input, size_t inSize)
 	uniqueStor.push_back(prevChar);
 
 	int numberOfRepeats = 0;
-	int numberOfUniques = 0; 
+	int numberOfUniques = 1; 
 	for (size_t i = 1; i < inSize; i++)
 	{
+		prevChar = input[i - 1]; 
 		currChar = input[i];
 
 		if (searchUniques)
@@ -40,7 +42,9 @@ void RleData::Compress(const char* input, size_t inSize)
 					{
 						debugString += uniqueStor.at(j);
 					}
-				
+
+
+					//continue; 
 				}
 				numberOfUniques = 0;
 				numberOfRepeats = 2; 
@@ -75,36 +79,82 @@ void RleData::Compress(const char* input, size_t inSize)
 				uniqueStor.clear();
 
 				uniqueStor.push_back(currChar);
+			//	std::cout << std::endl << "different char detected " << std::endl; 
+				//continue;
 			}
 		}
-
-		if (i == inSize-1 && searchUniques)
+		if (((size_t)numberOfRepeats) == MaxRunSize())
 		{
-			if ((!uniqueStor.empty()))
+
+
+			numberOfUniques = 1;
+			std::cout << std::endl << "max run reached  " << debugString << std::endl;
+
+			charStor.push_back(numberOfRepeats);
+			charStor.push_back(prevChar);
+
+			debugString.append(std::to_string(numberOfRepeats));
+			debugString += prevChar;
+			std::cout << std::endl << "max run reached  " <<debugString<< std::endl;
+
+			numberOfRepeats = 0;
+			uniqueStor.clear();
+
+			if (!(i == inSize - 1))
 			{
-				int size = -static_cast<int>(uniqueStor.size());
+				searchUniques = true;
+				uniqueStor.push_back(currChar);
+			}
+			
+		}
+		if (((size_t)numberOfUniques) == MaxRunSize())
+		{
+			int size = -static_cast<int>(uniqueStor.size());
+			charStor.push_back(size);
+			charStor.insert(charStor.end(), uniqueStor.begin(), uniqueStor.end());
 
-				charStor.push_back(size);
-				charStor.insert(charStor.end(), uniqueStor.begin(), uniqueStor.end());
+			debugString.append(std::to_string(size));
+			for (unsigned int j = 0; j < uniqueStor.size(); j++)
+			{
+				debugString += uniqueStor.at(j);
+			}
+			numberOfUniques = 0;
+			uniqueStor.clear();
 
-				debugString.append(std::to_string(size));
-				for (unsigned int j = 0; j < uniqueStor.size(); j++)
-				{
-					debugString += uniqueStor.at(j);
-				}
+		}
+		if (i == inSize-1)
+		{
+			std::cout << std::endl << i<<"last char is " << currChar << std::endl;
+
+		}
+		prevChar = currChar; 
+	}
+	if (searchUniques)
+	{
+		if ((!uniqueStor.empty()))
+		{
+			int size = -static_cast<int>(uniqueStor.size());
+
+			charStor.push_back(size);
+			charStor.insert(charStor.end(), uniqueStor.begin(), uniqueStor.end());
+
+			debugString.append(std::to_string(size));
+			for (unsigned int j = 0; j < uniqueStor.size(); j++)
+			{
+				debugString += uniqueStor.at(j);
 			}
 		}
-		else if (i == inSize-1 && (!searchUniques))
-		{
+	}
+	else if ((!searchUniques))
+	{
+		if (numberOfRepeats > 1) {
 			charStor.push_back(numberOfRepeats);
 			charStor.push_back(prevChar);
 
 			debugString.append(std::to_string(numberOfRepeats));
 			debugString += prevChar;
 		}
-		prevChar = currChar; 
 	}
-
 	mData = new char[charStor.size()];
 
 	for (unsigned int i = 0; i < charStor.size(); i++)
@@ -118,6 +168,46 @@ void RleData::Compress(const char* input, size_t inSize)
 void RleData::Decompress(const char* input, size_t inSize, size_t outSize)
 {
 	// TODO
+	delete[] mData; 
+	std::vector<char> charStor;
+	std::string debugString = "";
+
+	size_t i = 0; 
+	int compressedNo;
+	while (i < inSize)
+	{
+		compressedNo = (int)input[i];
+		if (compressedNo < 0)
+		{
+			compressedNo = -compressedNo;
+			for (int j = 0; j < compressedNo; j++)
+			{
+				charStor.push_back(input[i + 1 + j]);
+				debugString.push_back(input[i + 1 + j]);
+			}
+			i += compressedNo+1;
+		}
+		else
+		{
+			char repeatedChar = input[i + 1]; 
+			for (int j = 0; j < compressedNo; j++)
+			{
+				charStor.push_back(repeatedChar);
+				debugString.push_back(repeatedChar);
+			}
+			i += 2; 
+		}
+	}
+
+	mData = new char[charStor.size()];
+
+	for (unsigned int i = 0; i < charStor.size(); i++)
+	{
+		mData[i] = charStor[i];
+	}
+
+	std::cout << std::endl << "compressed String is " << debugString << std::endl;
+
 }
 
 std::ostream& operator<< (std::ostream& stream, const RleData& rhs)
