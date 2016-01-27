@@ -19,6 +19,7 @@ void RleData::Compress(const char* input, size_t inSize)
 
 	int numberOfRepeats = 0;
 	int numberOfUniques = 1; 
+	bool checkPrev = true; 
 	for (size_t i = 1; i < inSize; i++)
 	{
 		prevChar = input[i - 1]; 
@@ -27,7 +28,7 @@ void RleData::Compress(const char* input, size_t inSize)
 		if (searchUniques)
 		{
 
-			if (currChar == prevChar)
+			if (currChar == prevChar && (checkPrev))
 			{
 				searchUniques = false;
 				if (uniqueStor.size()>1)
@@ -50,7 +51,7 @@ void RleData::Compress(const char* input, size_t inSize)
 				numberOfRepeats = 2; 
 				uniqueStor.clear(); 
 			}
-			else
+			else if (checkPrev)
 			{
 				numberOfUniques++;
 				uniqueStor.push_back(currChar); 
@@ -60,12 +61,12 @@ void RleData::Compress(const char* input, size_t inSize)
 
 		else
 		{
-			if (currChar == prevChar)
+			if (currChar == prevChar && (checkPrev))
 			{
 				numberOfRepeats++; 
 				uniqueStor.clear(); 
 			}
-			else
+			else if(checkPrev)
 			{
 				numberOfUniques = 1; 
 				searchUniques = true; 
@@ -83,6 +84,11 @@ void RleData::Compress(const char* input, size_t inSize)
 				//continue;
 			}
 		}
+		if (!checkPrev)
+		{
+			uniqueStor.push_back(currChar);
+			checkPrev = true;
+		}
 		if (((size_t)numberOfRepeats) == MaxRunSize())
 		{
 
@@ -98,12 +104,14 @@ void RleData::Compress(const char* input, size_t inSize)
 		//	std::cout << std::endl << "max run reached  " <<debugString<< std::endl;
 
 			numberOfRepeats = 0;
-			uniqueStor.clear();
 
 			if (!(i == inSize - 1))
 			{
+				uniqueStor.clear();
+
 				searchUniques = true;
-				uniqueStor.push_back(currChar);
+				checkPrev = false; 
+				//uniqueStor.push_back(currChar);
 			}
 			
 		}
@@ -161,7 +169,7 @@ void RleData::Compress(const char* input, size_t inSize)
 	{
 		mData[i] = charStor[i]; 
 	}
-//	std::cout << std::endl << "compressed String is " << debugString << std::endl;
+	std::cout << std::endl << "compressed String is " << debugString << std::endl;
 
 }
 
@@ -200,13 +208,13 @@ void RleData::Decompress(const char* input, size_t inSize, size_t outSize)
 	}
 
 	mData = new char[charStor.size()];
-
+	mSize = charStor.size();
 	for (unsigned int i = 0; i < charStor.size(); i++)
 	{
 		mData[i] = charStor[i];
 	}
 
-	std::cout << std::endl << "decompressed String is " << debugString << std::endl;
+//	std::cout << std::endl << "decompressed String is " << debugString << std::endl;
 
 }
 

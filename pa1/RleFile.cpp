@@ -27,11 +27,12 @@ void RleFile::CreateArchive(const std::string& source)
 		mHeader.sig[2] = 'E';
 		mHeader.sig[3] = '\x01';
 
-		mHeader.fileSize = static_cast<int>(size);
 		mHeader.fileName = source; 
 		mHeader.fileNameLength = static_cast<unsigned char > (source.length());
 
 		mData.Compress(memblock, static_cast<int>(size));
+		mHeader.fileSize = static_cast<int>(size);
+
 		delete[] memblock; 
 	}
 	std::cout << std::endl<< "making file " << source << ".rl1" << std::endl;
@@ -57,7 +58,7 @@ void RleFile::ExtractArchive(const std::string& source)
 	std::ifstream::pos_type size;
 	char* memblock;
 	std::cout << std::endl << "decompressing  " << std::endl;
-	char* compressedData; 
+	//char* compressedData; 
 	std::ifstream file(source, std::ios::in | std::ios::binary | std::ios::ate);
 	if (file.is_open())
 	{
@@ -75,7 +76,7 @@ void RleFile::ExtractArchive(const std::string& source)
 		{
 			std::cerr << std::endl <<
 				"incorrect signature! aborting " << std::endl;
-			std::cout << "signature is " << memblock[0] << memblock[1] << memblock[2] << memblock[3] << std::endl;
+			std::cout << "signature is " << std::hex<<memblock[0] << memblock[1] << memblock[2] << memblock[3] << std::endl;
 			
 			delete[] memblock;
 			return;
@@ -89,19 +90,28 @@ void RleFile::ExtractArchive(const std::string& source)
 		{
 			mHeader.fileName += memblock[9 + i];
 		}
-		std::cout << std::endl << " file name length " << mHeader.fileNameLength << std::endl;
+		std::cout << std::endl << " file name length " << std::hex <<static_cast<unsigned>(mHeader.fileNameLength) << std::endl;
 
 		std::cout << std::endl << "making file " << mHeader.fileName << std::endl;
 
-		compressedData = memblock+ mHeader.fileNameLength+9;
-		std::cout << "file size is " << mHeader.fileSize << std::endl;
-
-		mData.Decompress(compressedData, static_cast<size_t>(mHeader.fileSize)-1, mHeader.fileSize);
+		//compressedData = memblock+ mHeader.fileNameLength+9;
+		//tried to do array addition but program keeps crashing
+		//used pure copy instead
+		std::cout << "file size is " << std::dec<< mHeader.fileSize << std::endl;
+		char* arr= new char[mHeader.fileSize]; 
+		
+		for (int i = 0;i < mHeader.fileSize;i++)
+		{
+			arr[i] = memblock[mHeader.fileNameLength + 9 + i];
+		}
+		
+		mData.Decompress(arr, static_cast<size_t>(mHeader.fileSize)-1, mHeader.fileSize);
 		delete[] memblock;
 	}
 	std::cout << std::endl << "making file " << mHeader.fileName << std::endl;
 	std::ofstream arc(mHeader.fileName);
 
+	std::cout << std::endl << "Extracted length " << mData.mSize << std::endl;
 
 	arc.write(mData.mData, mData.mSize);
 

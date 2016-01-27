@@ -47,8 +47,9 @@ public:
 	//	TEST_CASE_DESCRIBE(testAlternatingRun, "Basic unique letters");
 
 		//TEST_CASE_DESCRIBE(testBeyondMax, "Basic unique letters");
+		TEST_CASE_DESCRIBE(testMixedLongRuns, "basic long mixed run");
 
-
+		TEST_CASE_DESCRIBE(testLongerPosRun, "basic multi  long run");
 
 	}
 	void testSimpleRun()
@@ -64,27 +65,64 @@ public:
 		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
 
 	}
+	void testMixedLongRuns()
+	{
+		char test[394] = 
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+			"gggggggggggg"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			;
+		char expected[]
+			= "\x81"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"\x07f"
+			"g"
+			"\x0c"
+			"g"
+			"\x81"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf";
+		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
+
+	}
 	void testLongNegRun()
 	{
-		char test[128];
-		char expected[129];
-		expected[0] = '\x81'; 
-		for (int i = 0; i < 127; i+=2)
-		{
-			test[i] = 'f';
-			test[i + 1] = 'g';
-		}
-		for (int i = 1; i < 128 ; i += 2)
-		{
-			expected[i] = 'f';
-			expected[i + 1] = 'g';
-		}
+		char test[257] = "fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfg";
+		char expected[260] ="\x81"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"\x81"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfg"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfg"
+			"fgfgfgfgfgfgfgfgfgfgfg"
+			"\xfe""fg"
+			;
+
+		//expected[0] = '\x81'; 
+		std::cout << std::endl;
 
 
 		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
 
 	}
+	void testLongerPosRun()
+	{
+		char test[] =
+		"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff""a"
+"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+		char expected[] = "\x07f" "f"
+			"\x07f" "f"
+			"\xff""a"
+			"\x07f" "f";
+		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
 
+	}
 	void testLongPosRun()
 	{
 		char test[128];
