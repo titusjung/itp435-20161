@@ -23,6 +23,17 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
+		RleFile rFile;
+		std::string target(argv[1]);
+		if (target.substr(target.size() - 3, target.size())=="rl1")
+		{
+			rFile.ExtractArchive(target);
+		}
+		else
+		{
+			rFile.CreateArchive(target);
+		}
+
 		// TODO: Get the file name from argv[1] and either compress/decompress
 	}
 	return 0;

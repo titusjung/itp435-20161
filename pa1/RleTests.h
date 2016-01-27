@@ -36,11 +36,11 @@ public:
 
 		TEST_CASE_DESCRIBE(testLongPosRun, "basic positive long run");
 
-		TEST_CASE_DESCRIBE(testLongNegRun, "basic positive long run");
+		TEST_CASE_DESCRIBE(testLongNegRun, "basic negative long run");
 
-		TEST_CASE_DESCRIBE(testBasicRun, "basic  run");
+		TEST_CASE_DESCRIBE(testBasicRun, "basic 3 a run");
 
-		TEST_CASE_DESCRIBE(testSimpleRun, "basic  run");
+		TEST_CASE_DESCRIBE(testSimpleRun, "basic 1 a run");
 
 		//	TEST_CASE_DESCRIBE(testLongNegRun, "Basic unique letters");
 
@@ -92,8 +92,8 @@ public:
 		{
 			test[i] = 'f';
 		}
-		char expected[] = "\x07f";//"a""\x07f" "a";
-		std::cout << "size of array is " << test[126] << std::endl;
+		char expected[] = "\x07f" "f";//"a""\x07f" "a";
+		//std::cout << "size of array is " << test[126] << std::endl;
 		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
 
 	}
@@ -148,12 +148,28 @@ public:
 
 		TEST_CASE_DESCRIBE(testBasicNegativeRuns2, "Basic Decompression negative run test");
 
+		TEST_CASE_DESCRIBE(testBasicPositiveRuns2, "Basic Decompression positive  run test 2");
 
 		//TEST_CASE_DESCRIBE(testBasicPositiveRuns, "Basic Decompression positive run test");
 
 		// TODO: Add more Decompression test  cases
 	}
+	void testBasicPositiveRuns2()
+	{
+		char expected[] = "aaabbbcccdddaaabbbcccdddaaabbbcccdddaaabbbc"
+			"ccdddaaabbbcccdddaaabbbcccdddaaabbbcccdddaaabbbcccddd";
+		char test[] = "\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d"
+			"\x03" "a" "\x03" "b" "\x03" "c" "\x03" "d";
 
+		runDecompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
+
+	}
 	void testBasicNegativeRuns2()
 	{
 		char test[] = "\x28"  "x" "\xf9" "abcdefg" "\x28"  "x";
@@ -212,7 +228,17 @@ bool buffersAreSame(const char* expected, const char* actual, size_t size)
 
 	return retVal;
 }
-
+bool sizesAreSame(size_t actual , size_t expected)
+{
+	if (actual!=expected)
+	{
+		std::cerr << std::endl <<
+			"size mismatch expected: " << expected <<
+			" actual " << actual << std::endl;
+		return false;
+	}
+	return true; 
+}
 void runCompressionTest(char* test, size_t testSize, 
 	char* expected, size_t expectedSize)
 {
@@ -222,7 +248,8 @@ void runCompressionTest(char* test, size_t testSize,
 	//std::cout << "compressed size is " << r.mSize << " expected size is " << expectedSize << std::endl; 
 	ASSERT_TEST_MESSAGE(buffersAreSame(expected, r.mData, expectedSize),
 		"Buffer mismatch (see above for details)");
-
+	ASSERT_TEST_MESSAGE(sizesAreSame(r.mSize, expectedSize),
+		"sizes mismatch (see above for details)");
 }
 
 void runDecompressionTest(char* test, size_t testSize,

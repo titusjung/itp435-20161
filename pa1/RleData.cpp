@@ -88,14 +88,14 @@ void RleData::Compress(const char* input, size_t inSize)
 
 
 			numberOfUniques = 1;
-			std::cout << std::endl << "max run reached  " << debugString << std::endl;
+		//	std::cout << std::endl << "max run reached  " << debugString << std::endl;
 
 			charStor.push_back(numberOfRepeats);
 			charStor.push_back(prevChar);
 
 			debugString.append(std::to_string(numberOfRepeats));
 			debugString += prevChar;
-			std::cout << std::endl << "max run reached  " <<debugString<< std::endl;
+		//	std::cout << std::endl << "max run reached  " <<debugString<< std::endl;
 
 			numberOfRepeats = 0;
 			uniqueStor.clear();
@@ -124,7 +124,7 @@ void RleData::Compress(const char* input, size_t inSize)
 		}
 		if (i == inSize-1)
 		{
-			std::cout << std::endl << i<<"last char is " << currChar << std::endl;
+		//	std::cout << std::endl << i<<"last char is " << currChar << std::endl;
 
 		}
 		prevChar = currChar; 
@@ -156,12 +156,12 @@ void RleData::Compress(const char* input, size_t inSize)
 		}
 	}
 	mData = new char[charStor.size()];
-
+	mSize = charStor.size(); 
 	for (unsigned int i = 0; i < charStor.size(); i++)
 	{
 		mData[i] = charStor[i]; 
 	}
-	std::cout << std::endl << "compressed String is " << debugString << std::endl;
+//	std::cout << std::endl << "compressed String is " << debugString << std::endl;
 
 }
 
@@ -206,7 +206,7 @@ void RleData::Decompress(const char* input, size_t inSize, size_t outSize)
 		mData[i] = charStor[i];
 	}
 
-	std::cout << std::endl << "compressed String is " << debugString << std::endl;
+	std::cout << std::endl << "decompressed String is " << debugString << std::endl;
 
 }
 
