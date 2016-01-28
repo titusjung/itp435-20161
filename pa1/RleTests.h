@@ -33,7 +33,6 @@ public:
 		TEST_CASE_DESCRIBE(testUniqueBegining, "Test if 1 unique letter at beginning");
 
 
-		//TEST_CASE_DESCRIBE(testUniqueAndRepeatedRuns, "Basic unique letters");
 
 		TEST_CASE_DESCRIBE(testLongPosRun, "basic positive long run");
 
@@ -43,11 +42,7 @@ public:
 
 		TEST_CASE_DESCRIBE(testSimpleRun, "basic 1 a run");
 
-		//	TEST_CASE_DESCRIBE(testLongNegRun, "Basic unique letters");
 
-	//	TEST_CASE_DESCRIBE(testAlternatingRun, "Basic unique letters");
-
-		//TEST_CASE_DESCRIBE(testBeyondMax, "Basic unique letters");
 		TEST_CASE_DESCRIBE(testMixedLongRuns, "basic long mixed run");
 		
 		TEST_CASE_DESCRIBE(testLongerPosRun, "basic multi  long run");
@@ -105,7 +100,6 @@ public:
 			"\xfe""fg"
 			;
 
-		//expected[0] = '\x81'; 
 		std::cout << std::endl;
 
 
@@ -153,7 +147,6 @@ public:
 			test[i] = 'f';
 		}
 		char expected[] = "\x07f" "f";//"a""\x07f" "a";
-		//std::cout << "size of array is " << test[126] << std::endl;
 		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
 
 	}
@@ -210,7 +203,6 @@ public:
 
 		TEST_CASE_DESCRIBE(testBasicPositiveRuns2, "Basic Decompression positive  run test 2");
 
-		//TEST_CASE_DESCRIBE(testBasicPositiveRuns, "Basic Decompression positive run test");
 
 		// TODO: Add more Decompression test  cases
 	}
@@ -304,8 +296,6 @@ void runCompressionTest(char* test, size_t testSize,
 {
 	RleData r;
 	r.Compress(test, testSize);
-	//std::cout <<std::endl<< "compression string is " << r << std::endl;
-	//std::cout << "compressed size is " << r.mSize << " expected size is " << expectedSize << std::endl; 
 	ASSERT_TEST_MESSAGE(buffersAreSame(expected, r.mData, expectedSize),
 		"Buffer mismatch (see above for details)");
 	ASSERT_TEST_MESSAGE(sizesAreSame(r.mSize, expectedSize),

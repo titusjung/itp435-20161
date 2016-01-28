@@ -11,7 +11,7 @@ void RleFile::CreateArchive(const std::string& source)
 	// TODO
 	std::ifstream::pos_type size;
 	char* memblock;
-	std::cout << std::endl << "compressing  " <<std::endl;
+///	std::cout << std::endl << "compressing  " <<std::endl;
 
 	std::ifstream file(source, std::ios::in | std::ios::binary | std::ios::ate);
 	if (file.is_open())
@@ -26,7 +26,7 @@ void RleFile::CreateArchive(const std::string& source)
 		mHeader.sig[1] = 'L';
 		mHeader.sig[2] = 'E';
 		mHeader.sig[3] = '\x01';
-
+		//puts sig into file
 		mHeader.fileName = source; 
 		mHeader.fileNameLength = static_cast<unsigned char > (source.length());
 
@@ -35,7 +35,7 @@ void RleFile::CreateArchive(const std::string& source)
 
 		delete[] memblock; 
 	}
-	std::cout << std::endl<< "making file " << source << ".rl1" << std::endl;
+//	std::cout << std::endl<< "making file " << source << ".rl1" << std::endl;
 	std::ofstream arc(source + ".rl1",std::ios::out|std::ios::binary|std::ios::trunc);
 	if (arc.is_open())
 	{
@@ -53,14 +53,7 @@ void RleFile::CreateArchive(const std::string& source)
 	double percent = (static_cast<int>(size) - mData.mSize) /(double) size*100;
 	std::cout << "percentage compressed " << percent<<"%" << std::endl; 
 
-	/*
-	std::ofstream arc1("data/newfile.bmp");
-	RleData r2;
-	r2.Decompress(mData.mData, mData.mSize, mHeader.fileSize);
 
-	arc1.write(r2.mData, r2.mSize);
-	
-	arc1.close();*/
 }
 
 void RleFile::ExtractArchive(const std::string& source)
@@ -69,8 +62,7 @@ void RleFile::ExtractArchive(const std::string& source)
 
 	std::ifstream::pos_type size;
 	char* memblock;
-	std::cout << std::endl << "decompressing  " << std::endl;
-	//char* compressedData; 
+ 
 	std::ifstream file(source, std::ios::in | std::ios::binary | std::ios::ate);
 	if (file.is_open())
 	{
@@ -102,26 +94,20 @@ void RleFile::ExtractArchive(const std::string& source)
 		{
 			mHeader.fileName += memblock[9 + i];
 		}
-		std::cout << std::endl << " file name length " << mHeader.fileNameLength << std::endl;
-
-		std::cout << std::endl << "making file " << mHeader.fileName << std::endl;
-
-		//compressedData = memblock+ mHeader.fileNameLength+9;
-		//tried to do array addition but program keeps crashing
-		//used pure copy instead
-		std::cout << "file size is " << std::dec << mHeader.fileSize << std::endl;
-		char* arr = new char[mHeader.fileSize];
+		//copying array so to remove the header
+		//tried to use array arithmetic early but caused crashes for some reason
+		char* arr = new char[static_cast<int>(size)];
 
 		for (int i = 0;i < size;i++)
 		{
 			arr[i] = memblock[mHeader.fileNameLength + 9 + i];
 		}
 
-		mData.Decompress(arr, static_cast<size_t>(mHeader.fileSize) - 1, mHeader.fileSize);
+		mData.Decompress(arr, static_cast<size_t>(size) - 1, mHeader.fileSize);
 		delete[] memblock;
+		delete[] arr; 
 	}
-	std::cout << std::endl << "making file " << mHeader.fileName << std::endl;
-	std::ofstream arc(mHeader.fileName);
+	std::ofstream arc(mHeader.fileName, std::ios::out | std::ios::binary | std::ios::trunc);
 
 	if (arc.is_open())
 	{

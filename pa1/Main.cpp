@@ -24,7 +24,15 @@ int main(int argc, char* argv[])
 	else
 	{
 		RleFile rFile;
-		std::string target(argv[1]);
+		std::string target= argv[1];
+		/*
+		//tried to get file names with spaces to work but ran out of time
+		for (int i = 1; i < argc; i++)
+		{
+			target += argv[i];
+		}*/
+
+
 		if (target.substr(target.size() - 3, target.size())=="rl1")
 		{
 			rFile.ExtractArchive(target);

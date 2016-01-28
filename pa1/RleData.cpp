@@ -9,6 +9,7 @@ void RleData::Compress(const char* input, size_t inSize)
 	delete[] mData; 
 	std::string debugString = ""; 
 
+	//vectors were used to store the char's instead of arrays
 	std::vector<char> charStor;
 	std::vector<char> uniqueStor; 
 	bool searchUniques = true;
@@ -19,11 +20,15 @@ void RleData::Compress(const char* input, size_t inSize)
 
 	int numberOfRepeats = 0;
 	bool checkPrev = true; 
+	// the program has two states: look for unique pattersn and look for repeating chars
+	//main loop 
 	for (size_t i = 1; i < inSize; i++)
 	{
 
 		prevChar = input[i - 1]; 
 		currChar = input[i];
+		//when i reached 127 i want to reset the loop and ignore the previous char
+		// this puts the machine like it just start over
 		if (!checkPrev)
 		{
 			checkPrev = true;
@@ -33,6 +38,7 @@ void RleData::Compress(const char* input, size_t inSize)
 			searchUniques = true;
 			continue;
 		}
+		//looks for unique patterns; 
 		if (searchUniques)
 		{
 
@@ -63,6 +69,7 @@ void RleData::Compress(const char* input, size_t inSize)
 			}
 
 		}
+		//looks for repeating patterns; 
 
 		else
 		{
@@ -86,7 +93,7 @@ void RleData::Compress(const char* input, size_t inSize)
 
 			}
 		}
-
+		// when i reach 127 repeats
 		if (((size_t)numberOfRepeats) == MaxRunSize())
 		{
 			charStor.push_back(numberOfRepeats);
@@ -104,6 +111,7 @@ void RleData::Compress(const char* input, size_t inSize)
 			}
 			uniqueStor.clear();
 		}
+		//when the program reaches 127 run
 		if (((size_t)uniqueStor.size()) == MaxRunSize())
 		{
 			int size = -static_cast<int>(uniqueStor.size());
@@ -125,6 +133,11 @@ void RleData::Compress(const char* input, size_t inSize)
 		}
 
 	}
+	/*
+	last 2 if statements deal with the end of the array
+	//if the program is still in a nonempty run at the end of the array, this publishes the run
+
+	*/
 	if (searchUniques)
 	{
 		if ((!uniqueStor.empty()))
@@ -151,6 +164,8 @@ void RleData::Compress(const char* input, size_t inSize)
 			debugString += prevChar;
 		}
 	}
+
+	//copy vectory to char array: causes time issues and should find a better way
 	mData = new char[charStor.size()];
 	mSize = charStor.size(); 
 	for (unsigned int i = 0; i < charStor.size(); i++)
@@ -179,7 +194,7 @@ void RleData::Decompress(const char* input, size_t inSize, size_t outSize)
 			for (int j = 0; j < compressedNo; j++)
 			{
 				charStor.push_back(input[i + 1 + j]);
-				debugString.push_back(input[i + 1 + j]);
+		//		debugString.push_back(input[i + 1 + j]);
 			}
 			i += compressedNo+1;
 		}
@@ -189,7 +204,7 @@ void RleData::Decompress(const char* input, size_t inSize, size_t outSize)
 			for (int j = 0; j < compressedNo; j++)
 			{
 				charStor.push_back(repeatedChar);
-				debugString.push_back(repeatedChar);
+		//		debugString.push_back(repeatedChar);
 			}
 			i += 2; 
 		}
