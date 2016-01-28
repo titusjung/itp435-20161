@@ -22,6 +22,15 @@ void RleData::Compress(const char* input, size_t inSize)
 	bool checkPrev = true; 
 	for (size_t i = 1; i < inSize; i++)
 	{
+		if (!checkPrev)
+		{
+			checkPrev = true;
+			uniqueStor.clear();
+
+			uniqueStor.push_back(currChar);
+			searchUniques = true;
+			continue;
+		}
 		prevChar = input[i - 1]; 
 		currChar = input[i];
 
@@ -84,11 +93,7 @@ void RleData::Compress(const char* input, size_t inSize)
 				//continue;
 			}
 		}
-		if (!checkPrev)
-		{
-			uniqueStor.push_back(currChar);
-			checkPrev = true;
-		}
+
 		if (((size_t)numberOfRepeats) == MaxRunSize())
 		{
 
@@ -113,7 +118,7 @@ void RleData::Compress(const char* input, size_t inSize)
 				checkPrev = false; 
 				//uniqueStor.push_back(currChar);
 			}
-			
+			uniqueStor.clear();
 		}
 		if (((size_t)numberOfUniques) == MaxRunSize())
 		{

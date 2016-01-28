@@ -22,6 +22,7 @@ class CompressionTests : public TestFixture<CompressionTests>
 public:
 	TEST_FIXTURE_DESCRIBE(CompressionTests, "Testing Compression...")
 	{
+		/*
 		TEST_CASE_DESCRIBE(testBasicPositiveRuns, "Basic positive runs test");
 		// TODO: Add more Compression test cases
 		TEST_CASE_DESCRIBE(testMixedLetterRuns, "Basic mixed letters");
@@ -48,8 +49,9 @@ public:
 
 		//TEST_CASE_DESCRIBE(testBeyondMax, "Basic unique letters");
 		TEST_CASE_DESCRIBE(testMixedLongRuns, "basic long mixed run");
-
+		*/
 		TEST_CASE_DESCRIBE(testLongerPosRun, "basic multi  long run");
+		TEST_CASE_DESCRIBE(testLongerPosNegRun, "basic multi Pos and Neg  long run");
 
 	}
 	void testSimpleRun()
@@ -116,9 +118,26 @@ public:
 		"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
 "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff""a"
 "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+		char expected[] = "\x7f" "f"
+			"\x7f" "f"
+			"\xff""a"
+			"\x7f" "f";
+		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
+
+	}
+	void testLongerPosNegRun()
+	{
+		char test[] =
+			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
 		char expected[] = "\x07f" "f"
 			"\x07f" "f"
-			"\xff""a"
+			"\x81"
+			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
+			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"	
 			"\x07f" "f";
 		runCompressionTest(test, sizeof(test) - 1, expected, sizeof(expected) - 1);
 
