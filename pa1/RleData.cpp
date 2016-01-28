@@ -18,10 +18,12 @@ void RleData::Compress(const char* input, size_t inSize)
 	uniqueStor.push_back(prevChar);
 
 	int numberOfRepeats = 0;
-	int numberOfUniques = 1; 
 	bool checkPrev = true; 
 	for (size_t i = 1; i < inSize; i++)
 	{
+
+		prevChar = input[i - 1]; 
+		currChar = input[i];
 		if (!checkPrev)
 		{
 			checkPrev = true;
@@ -31,9 +33,6 @@ void RleData::Compress(const char* input, size_t inSize)
 			searchUniques = true;
 			continue;
 		}
-		prevChar = input[i - 1]; 
-		currChar = input[i];
-
 		if (searchUniques)
 		{
 
@@ -54,15 +53,12 @@ void RleData::Compress(const char* input, size_t inSize)
 					}
 
 
-					//continue; 
 				}
-				numberOfUniques = 0;
 				numberOfRepeats = 2; 
 				uniqueStor.clear(); 
 			}
 			else if (checkPrev)
 			{
-				numberOfUniques++;
 				uniqueStor.push_back(currChar); 
 			}
 
@@ -73,11 +69,9 @@ void RleData::Compress(const char* input, size_t inSize)
 			if (currChar == prevChar && (checkPrev))
 			{
 				numberOfRepeats++; 
-				uniqueStor.clear(); 
 			}
 			else if(checkPrev)
 			{
-				numberOfUniques = 1; 
 				searchUniques = true; 
 				charStor.push_back(numberOfRepeats); 
 				charStor.push_back(prevChar); 
@@ -89,38 +83,28 @@ void RleData::Compress(const char* input, size_t inSize)
 				uniqueStor.clear();
 
 				uniqueStor.push_back(currChar);
-			//	std::cout << std::endl << "different char detected " << std::endl; 
-				//continue;
+
 			}
 		}
 
 		if (((size_t)numberOfRepeats) == MaxRunSize())
 		{
-
-
-			numberOfUniques = 1;
-		//	std::cout << std::endl << "max run reached  " << debugString << std::endl;
-
 			charStor.push_back(numberOfRepeats);
 			charStor.push_back(prevChar);
 
 			debugString.append(std::to_string(numberOfRepeats));
 			debugString += prevChar;
-		//	std::cout << std::endl << "max run reached  " <<debugString<< std::endl;
 
 			numberOfRepeats = 0;
 
 			if (!(i == inSize - 1))
 			{
-				uniqueStor.clear();
-
 				searchUniques = true;
 				checkPrev = false; 
-				//uniqueStor.push_back(currChar);
 			}
 			uniqueStor.clear();
 		}
-		if (((size_t)numberOfUniques) == MaxRunSize())
+		if (((size_t)uniqueStor.size()) == MaxRunSize())
 		{
 			int size = -static_cast<int>(uniqueStor.size());
 			charStor.push_back(size);
@@ -131,16 +115,15 @@ void RleData::Compress(const char* input, size_t inSize)
 			{
 				debugString += uniqueStor.at(j);
 			}
-			numberOfUniques = 0;
 			uniqueStor.clear();
+			if (!(i == inSize - 1))
+			{
 
+				searchUniques = true;
+				checkPrev = false;
+			}
 		}
-		if (i == inSize-1)
-		{
-		//	std::cout << std::endl << i<<"last char is " << currChar << std::endl;
 
-		}
-		prevChar = currChar; 
 	}
 	if (searchUniques)
 	{
@@ -174,7 +157,7 @@ void RleData::Compress(const char* input, size_t inSize)
 	{
 		mData[i] = charStor[i]; 
 	}
-	std::cout << std::endl << "compressed String is " << debugString << std::endl;
+	//std::cout << std::endl << "compressed String is " << debugString << std::endl;
 
 }
 

@@ -22,7 +22,7 @@ class CompressionTests : public TestFixture<CompressionTests>
 public:
 	TEST_FIXTURE_DESCRIBE(CompressionTests, "Testing Compression...")
 	{
-		/*
+		
 		TEST_CASE_DESCRIBE(testBasicPositiveRuns, "Basic positive runs test");
 		// TODO: Add more Compression test cases
 		TEST_CASE_DESCRIBE(testMixedLetterRuns, "Basic mixed letters");
@@ -49,7 +49,7 @@ public:
 
 		//TEST_CASE_DESCRIBE(testBeyondMax, "Basic unique letters");
 		TEST_CASE_DESCRIBE(testMixedLongRuns, "basic long mixed run");
-		*/
+		
 		TEST_CASE_DESCRIBE(testLongerPosRun, "basic multi  long run");
 		TEST_CASE_DESCRIBE(testLongerPosNegRun, "basic multi Pos and Neg  long run");
 
@@ -130,11 +130,14 @@ public:
 		char test[] =
 			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
 			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+
 			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
 			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
 			"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
 		char expected[] = "\x07f" "f"
-			"\x07f" "f"
+			"\x07f" "f"			"\x07f" "f"
+
 			"\x81"
 			"fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"
 			"gfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf"	
