@@ -11,7 +11,7 @@ void RleFile::CreateArchive(const std::string& source)
 	// TODO
 	std::ifstream::pos_type size;
 	char* memblock;
-	std::cout << std::endl << "compressing  " <<std::endl;
+///	std::cout << std::endl << "compressing  " <<std::endl;
 
 	std::ifstream file(source, std::ios::in | std::ios::binary | std::ios::ate);
 	if (file.is_open())
@@ -26,7 +26,7 @@ void RleFile::CreateArchive(const std::string& source)
 		mHeader.sig[1] = 'L';
 		mHeader.sig[2] = 'E';
 		mHeader.sig[3] = '\x01';
-
+		//puts sig into file
 		mHeader.fileName = source; 
 		mHeader.fileNameLength = static_cast<unsigned char > (source.length());
 
@@ -35,19 +35,24 @@ void RleFile::CreateArchive(const std::string& source)
 
 		delete[] memblock; 
 	}
-	std::cout << std::endl<< "making file " << source << ".rl1" << std::endl;
-	std::ofstream arc(source + ".rl1");
-	arc.write(mHeader.sig, 4);
-	arc.write(reinterpret_cast<char*>(&(mHeader.fileSize)), 4);
-	arc.write(reinterpret_cast<char*>(&mHeader.fileNameLength), 1);
-	arc.write(mHeader.fileName.c_str(), mHeader.fileNameLength);
+//	std::cout << std::endl<< "making file " << source << ".rl1" << std::endl;
+	std::ofstream arc(source + ".rl1",std::ios::out|std::ios::binary|std::ios::trunc);
+	if (arc.is_open())
+	{
+		arc.write(mHeader.sig, 4);
+		arc.write(reinterpret_cast<char*>(&(mHeader.fileSize)), 4);
+		arc.write((char*)(&mHeader.fileNameLength), 1);
+		int size2 = static_cast<int>(mHeader.fileNameLength);
+		arc.write(mHeader.fileName.c_str(), size2);
 
-	arc.write(mData.mData, mData.mSize); 
+		arc.write(mData.mData, mData.mSize);
 
-	arc.close(); 
+		arc.close();
+	}
 	std::cout << std::endl << "compressed size " << mData.mSize << " original size " << size << std::endl;
 	double percent = (static_cast<int>(size) - mData.mSize) /(double) size*100;
 	std::cout << "percentage compressed " << percent<<"%" << std::endl; 
+
 
 }
 
@@ -57,8 +62,7 @@ void RleFile::ExtractArchive(const std::string& source)
 
 	std::ifstream::pos_type size;
 	char* memblock;
-	std::cout << std::endl << "decompressing  " << std::endl;
-	//char* compressedData; 
+ 
 	std::ifstream file(source, std::ios::in | std::ios::binary | std::ios::ate);
 	if (file.is_open())
 	{
@@ -76,44 +80,39 @@ void RleFile::ExtractArchive(const std::string& source)
 		{
 			std::cerr << std::endl <<
 				"incorrect signature! aborting " << std::endl;
-			std::cout << "signature is " << std::hex<<memblock[0] << memblock[1] << memblock[2] << memblock[3] << std::endl;
-			
+			std::cout << "signature is " << std::hex << memblock[0] << memblock[1] << memblock[2] << memblock[3] << std::endl;
+
 			delete[] memblock;
 			return;
 		}
 
 
 		mHeader.fileSize = *(reinterpret_cast<int*>(&memblock[4]));
-		mHeader.fileNameLength = ( memblock[8]);
+		mHeader.fileNameLength = (memblock[8]);
 		mHeader.fileName = "";
 		for (unsigned char i = 0; i < mHeader.fileNameLength; i++)
 		{
 			mHeader.fileName += memblock[9 + i];
 		}
-		std::cout << std::endl << " file name length " << std::hex <<static_cast<unsigned>(mHeader.fileNameLength) << std::endl;
+		//copying array so to remove the header
+		//tried to use array arithmetic early but caused crashes for some reason
+		char* arr = new char[static_cast<int>(size)];
 
-		std::cout << std::endl << "making file " << mHeader.fileName << std::endl;
-
-		//compressedData = memblock+ mHeader.fileNameLength+9;
-		//tried to do array addition but program keeps crashing
-		//used pure copy instead
-		std::cout << "file size is " << std::dec<< mHeader.fileSize << std::endl;
-		char* arr= new char[mHeader.fileSize]; 
-		
-		for (int i = 0;i < mHeader.fileSize;i++)
+		for (int i = 0;i < size;i++)
 		{
 			arr[i] = memblock[mHeader.fileNameLength + 9 + i];
 		}
-		
-		mData.Decompress(arr, static_cast<size_t>(mHeader.fileSize)-1, mHeader.fileSize);
+
+		mData.Decompress(arr, static_cast<size_t>(size) - 1, mHeader.fileSize);
 		delete[] memblock;
+		delete[] arr; 
 	}
-	std::cout << std::endl << "making file " << mHeader.fileName << std::endl;
-	std::ofstream arc(mHeader.fileName);
+	std::ofstream arc(mHeader.fileName, std::ios::out | std::ios::binary | std::ios::trunc);
 
-	std::cout << std::endl << "Extracted length " << mData.mSize << std::endl;
+	if (arc.is_open())
+	{
+		arc.write(mData.mData, mData.mSize);
 
-	arc.write(mData.mData, mData.mSize);
-
-	arc.close();
+		arc.close();
+	}
 }
