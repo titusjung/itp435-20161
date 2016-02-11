@@ -4,9 +4,11 @@
 #include <string>
 #include "Sha1.h"
 #include "DictionaryAttack.h"
-
+#include "util.h"
+#include "ParallelBruteForce.h"
+#include "Timer.h"
 const std::string outputfile = "pass_solved.txt"; 
-const std::string testCode = "d0c27450d749f527f7898b435d85189e9180e906"; 
+const std::string testCode = "70b6234f544af0132629aa6ec4be926dab59bb0b"; 
 
 int main(int argc, char* argv[])
 {
@@ -28,13 +30,22 @@ int main(int argc, char* argv[])
 		std::string dict = argv[1]; 
 		std::string pass = argv[2]; 
 		da.loadDictionary(dict); 
-		da.loadPasswordsAndPrintResults(pass, outputfile);
+		da.loadPasswordsandSolve(pass);
+		da.parallelBruteForceLoadedPasswords();
+		da.print(outputfile); 
+		
 	}
 	else
 	{
 		//testing code
 		std::cout << "testing basic brute force code" << std::endl; 
-		std::cout << bruteForce(testCode, 4) << std::endl; 
+		Timer timer;
+		timer.start();
+		ParallelBruteForce pbf; 
+		pbf.parallelBruteForce(testCode);
+		std::cout << pbf.getPass() << std::endl; 
+		std::cout << "parallel brute force took " << timer.getElapsed() << " seconds" << std::endl;
+
 	}
 	return 0;
 }
