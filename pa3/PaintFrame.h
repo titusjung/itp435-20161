@@ -52,7 +52,7 @@ private:
 	void ToggleTool(EventID toolID);
 
 	void SetCursor(CursorType type);
-	
+	void UpdateUndoRedo();
 	wxDECLARE_EVENT_TABLE();
 private:
 	CursorCache mCursors;

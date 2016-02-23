@@ -13,20 +13,30 @@
   <ItemGroup>
     <ClInclude Include="Command.h" />
     <ClInclude Include="Cursors.h" />
+    <ClInclude Include="DrawCommand.h" />
+    <ClInclude Include="EllipseShape.h" />
     <ClInclude Include="EventID.h" />
+    <ClInclude Include="LineShape.h" />
     <ClInclude Include="PaintApp.h" />
     <ClInclude Include="PaintDrawPanel.h" />
     <ClInclude Include="PaintFrame.h" />
     <ClInclude Include="PaintModel.h" />
+    <ClInclude Include="PencilShape.h" />
+    <ClInclude Include="RectShape.h" />
     <ClInclude Include="Shape.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Cursors.cpp" />
+    <ClCompile Include="DrawCommand.cpp" />
+    <ClCompile Include="EllipseShape.cpp" />
+    <ClCompile Include="LineShape.cpp" />
     <ClCompile Include="PaintApp.cpp" />
     <ClCompile Include="PaintDrawPanel.cpp" />
     <ClCompile Include="PaintFrame.cpp" />
     <ClCompile Include="PaintModel.cpp" />
+    <ClCompile Include="PencilShape.cpp" />
+    <ClCompile Include="RectShape.cpp" />
     <ClCompile Include="Shape.cpp" />
   </ItemGroup>
   <ItemGroup>

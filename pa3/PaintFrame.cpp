@@ -176,6 +176,8 @@ void PaintFrame::OnNew(wxCommandEvent& event)
 {
 	mModel->New();
 	mPanel->PaintNow();
+	UpdateUndoRedo();
+
 }
 
 void PaintFrame::OnExport(wxCommandEvent& event)
@@ -191,11 +193,19 @@ void PaintFrame::OnImport(wxCommandEvent& event)
 void PaintFrame::OnUndo(wxCommandEvent& event)
 {
 	// TODO
+	mModel->Undo(); 
+	UpdateUndoRedo(); 
+	mPanel->PaintNow();
+
 }
 
 void PaintFrame::OnRedo(wxCommandEvent& event)
 {
 	// TODO
+	mModel->Redo(); 
+	UpdateUndoRedo();
+	mPanel->PaintNow();
+
 }
 
 void PaintFrame::OnUnselect(wxCommandEvent& event)
@@ -228,16 +238,48 @@ void PaintFrame::OnMouseButton(wxMouseEvent& event)
 	if (event.LeftDown())
 	{
 		// TODO: This is when the left mouse button is pressed
+		switch (mCurrentTool)
+		{
+		case ID_DrawRect:
+			mModel->CreateCommand(CM_DrawRect, event.GetPosition());
+			break;
+		case ID_DrawEllipse:
+			mModel->CreateCommand(CM_DrawEllipse, event.GetPosition());
+			break;
+		case ID_DrawLine:
+			mModel->CreateCommand(CM_DrawLine, event.GetPosition());
+			break;
+		case ID_DrawPencil:
+			mModel->CreateCommand(CM_DrawPencil, event.GetPosition());
+			break;
+		}
+
 	}
 	else if (event.LeftUp())
 	{
 		// TODO: This is when the left mouse button is released
+		if (mModel->HasActiveCommand())
+		{
+			mModel->UpdateCommand(event.GetPosition());
+			mModel->Finalize();
+		}
+
 	}
+	mPanel->PaintNow();
+
+	UpdateUndoRedo();
+
 }
 
 void PaintFrame::OnMouseMove(wxMouseEvent& event)
 {
 	// TODO: This is when the mouse is moved inside the drawable area
+	if (mModel->HasActiveCommand())
+	{
+		mModel->UpdateCommand(event.GetPosition());
+		mPanel->PaintNow();
+
+	}
 }
 
 void PaintFrame::ToggleTool(EventID toolID)
@@ -283,4 +325,11 @@ void PaintFrame::OnSelectTool(wxCommandEvent& event)
 		SetCursor(CU_Default);
 		break;
 	}
+}
+void PaintFrame::UpdateUndoRedo()
+{
+	mEditMenu->Enable(wxID_UNDO, mModel->CanUndo());
+	mEditMenu->Enable(wxID_REDO, mModel->CanRedo());
+	mToolbar->EnableTool(wxID_UNDO, mModel->CanUndo());
+	mToolbar->EnableTool(wxID_REDO, mModel->CanRedo());
 }
