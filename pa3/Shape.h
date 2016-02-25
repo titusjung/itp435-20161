@@ -31,9 +31,10 @@ public:
 
 	bool IsSelected() const { return mSelected; }
 
-	void Move(const wxPoint moveLoc) { mOffSet+= moveLoc - mStartPoint; }
+	void Move(const wxPoint& moveLoc);
 	wxPoint GetOffSets() const { return mOffSet; }
 
+	wxPoint GetStart() const { return mStartPoint; }
 
 protected:
 	// Starting point of shape

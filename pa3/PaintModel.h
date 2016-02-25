@@ -55,7 +55,7 @@ public:
 	bool IsMoveMode() const { return mMoveMode; }
 
 	bool IsMoveAndCommandMode() const { return mMoveAndCommand; }
-	bool SetMoveAndCommand(bool movecommand) { mMoveAndCommand = movecommand; }
+	void SetMoveAndCommand(const bool movecommand) { mMoveAndCommand = movecommand; }
 
 	void FileSave(const std::string& filename, const wxSize& size); 
 

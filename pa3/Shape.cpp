@@ -66,5 +66,10 @@ void Shape::DrawSelection(wxDC& dc)
 	wxPoint botRight = mBotRight + mOffSet;
 	botRight.y--;
 	botRight.x++;
-	dc.DrawRectangle(wxRect(topLeft+mOffSet, botRight + mOffSet));
+	dc.DrawRectangle(wxRect(topLeft, botRight));
+}
+void  Shape::Move(const wxPoint& moveLoc) 
+{ 
+
+	mOffSet = moveLoc;
 }

@@ -15,7 +15,7 @@ Command::Command(const wxPoint& start, std::shared_ptr<Shape> shape)
 	,mEndPoint(start)
 	,mShape(shape)
 {
-
+	mShape = shape; 
 }
 
 // Called when the command is still updating (such as in the process of drawing)
@@ -54,20 +54,36 @@ std::shared_ptr<Command> CommandFactory::Create(std::shared_ptr<PaintModel> mode
 		//retVal = std::make_shared<DrawCommand>(start, shape);
 		break;
 	case CM_SetPen:
+		if (!model->HasSelection())
+		{
+			break; 
+		}
 		shape = model->GetSelectedShape();
 		retVal = std::make_shared<SetPenCommand>(start, shape);
 		return retVal;
 	case CM_SetBrush:
+		if (!model->HasSelection())
+		{
+			break;
+		}
 		shape = model->GetSelectedShape();
 		retVal = std::make_shared<SetBrushCommand>(start, shape);
 		return retVal;
 	case CM_Delete:
+		if (!model->HasSelection())
+		{
+			break;
+		}
 		shape = model->GetSelectedShape();
-		retVal = std::make_shared<DeleteCommand>(start, shape);
+		retVal = std::make_shared<DeleteCommand>(shape->GetStart(), shape);
 		return retVal;
 	case CM_Move:
+		if (!model->HasSelection())
+		{
+			
+		}
 		shape = model->GetSelectedShape();
-		retVal = std::make_shared<MoveCommand>(start, shape);
+		retVal = std::make_shared<MoveCommand>(shape->GetStart(), model->GetSelectedShape());
 		return retVal;
 
 	default:

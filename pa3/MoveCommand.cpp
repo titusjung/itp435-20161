@@ -4,12 +4,15 @@ MoveCommand::MoveCommand(const wxPoint& start, std::shared_ptr<Shape> shape) : C
 {
 	assert(shape != nullptr);
 	mOldOffSet = shape->GetOffSets(); 
-
+	mStartPoint = start; 
+	mShape = shape; 
 }
 
 void MoveCommand::Update(const wxPoint & newPoint)
 {
-	wxPoint potPoint = newPoint; 
+	assert(mShape != nullptr);
+
+	wxPoint potPoint = newPoint-mStartPoint; 
 	mShape->Move(potPoint);
 }
 void  MoveCommand::Finalize(std::shared_ptr<PaintModel> model)

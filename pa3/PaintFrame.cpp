@@ -360,12 +360,18 @@ void PaintFrame::OnMouseButton(wxMouseEvent& event)
 			if (!mModel->IsMoveAndCommandMode())
 			{
 				mModel->CreateCommand(CM_Move, event.GetPosition());
+				mModel->SetMoveAndCommand(true);
 			}
-			else
+			else if(mModel->HasSelection() && mModel->HasActiveCommand())
 			{
 				mModel->UpdateCommand(event.GetPosition());
+				mModel->Finalize(); 
+				mModel->SetMoveAndCommand(false);
+
 			}
 
+
+		
 		}
 	}
 	else if (event.LeftUp())
@@ -376,6 +382,7 @@ void PaintFrame::OnMouseButton(wxMouseEvent& event)
 			mModel->UpdateCommand(event.GetPosition());
 			mModel->Finalize();
 		}
+		mModel->SetMoveAndCommand(false);
 
 	}
 	mPanel->PaintNow();
