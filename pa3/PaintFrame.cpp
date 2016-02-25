@@ -365,8 +365,6 @@ void PaintFrame::OnMouseButton(wxMouseEvent& event)
 			else if(mModel->HasSelection() && mModel->HasActiveCommand())
 			{
 				mModel->UpdateCommand(event.GetPosition());
-				mModel->Finalize(); 
-				mModel->SetMoveAndCommand(false);
 
 			}
 
