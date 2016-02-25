@@ -6,5 +6,5 @@ RectShape::RectShape(const wxPoint & start) :Shape(start)
 
 void RectShape::Draw(wxDC & dc) const 
 {
-	dc.DrawRectangle( wxRect(mStartPoint, mEndPoint)); 
+	dc.DrawRectangle( wxRect(mStartPoint + mOffSet, mEndPoint + mOffSet));
 }

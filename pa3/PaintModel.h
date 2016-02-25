@@ -31,11 +31,46 @@ public:
 	bool CanUndo() const { return !mUndoStack.empty(); }
 	bool CanRedo() const { return !mRedoStack.empty();  }
 
+	void SetPenWidth(const int width){ mPen.SetWidth(width); }
+	int  GetPenWidth() const { return mPen.GetWidth(); }
+
+	void SetPenColor(const wxColour& color) { mPen.SetColour(color);  }
+	wxColour GetPenColor() const { return mPen.GetColour();  }
+
+	void SetBrushColor(const wxColour& color) { mBrush.SetColour(color); }
+	wxColour GetBrushColor() const { return mBrush.GetColour(); }
+
+	wxPen GetPen() const { return mPen; }
+	wxBrush GetBrush() const { return mBrush; }
+
+	void SelectionAtPoint(const wxPoint& selectedPoint);
+	bool HasSelection() const { return mSelectedShape != nullptr; }
+	void Unselect() { mSelectedShape = nullptr;  }
+
+	std::shared_ptr<Shape> GetSelectedShape() const { return mSelectedShape; }
+
+	bool IsIntersectWithSelection(const wxPoint& point) const;
+
+	void SetMoveMode(const bool moveMode) { mMoveMode = moveMode; }
+	bool IsMoveMode() const { return mMoveMode; }
+
+	bool IsMoveAndCommandMode() const { return mMoveAndCommand; }
+	bool SetMoveAndCommand(bool movecommand) { mMoveAndCommand = movecommand; }
+
+	void FileSave(const std::string& filename, const wxSize& size); 
+
+	void FileLoad(const std::string& filename);
 private:
 	// Vector of all the shapes in the model
 	std::vector<std::shared_ptr<Shape>> mShapes;
 	std::shared_ptr<Command> mCurrentCommand; 
 	std::stack<std::shared_ptr<Command>> mUndoStack; 
 	std::stack<std::shared_ptr<Command>> mRedoStack;
+	wxPen mPen;
+	wxBrush mBrush; 
+	std::shared_ptr<Shape> mSelectedShape;
+	bool mMoveMode; 
+	bool mMoveAndCommand =false; 
 
+	wxBitmap mLoadMap; 
 };

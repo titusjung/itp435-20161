@@ -25,7 +25,7 @@ void PencilShape::Finalize()
 	mBotRight.y = mStartPoint.y;
 
 	mBotRight.x = mStartPoint.x;
-	mTopLeft.x = mStartPoint.y;
+	mTopLeft.x = mStartPoint.x;
 	for each(wxPoint wPoint in mPointVector)
 	{
 		if (wPoint.x > mBotRight.x)
@@ -38,11 +38,11 @@ void PencilShape::Finalize()
 			//mostLeft = wPoint.x;
 			mTopLeft.x = wPoint.x;
 		}
-		if (wPoint.y > mTopLeft.x)
+		if (wPoint.y < mTopLeft.y)
 		{
 			mTopLeft.y = wPoint.y; 
 		}
-		if (wPoint.y < mBotRight.y)
+		if (wPoint.y > mBotRight.y)
 		{
 			mBotRight.y = wPoint.y; 
 		}
@@ -53,10 +53,15 @@ void PencilShape::Draw(wxDC & dc) const
 {
 	if (mPointVector.size()>1)
 	{
-		dc.DrawLines((int)mPointVector.size(), mPointVector.data());
+		std::vector<wxPoint> withOffSetVector = mPointVector;
+		for each (wxPoint point in withOffSetVector)
+		{
+			point+=mOffSet;
+		}
+		dc.DrawLines(mPointVector.size(), withOffSetVector.data());
 	}
 	else
 	{
-		dc.DrawPoint(mPointVector.front()); 
+		dc.DrawPoint(mPointVector.front()+mOffSet); 
 	}
 }

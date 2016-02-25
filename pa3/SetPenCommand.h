@@ -1,11 +1,12 @@
 #pragma once
 #include "Command.h"
+#include "Shape.h"
+#include <wx/bitmap.h>
 
-
-class DrawCommand : public Command
+class SetPenCommand : public Command
 {
 public:
-	DrawCommand(const wxPoint& start, std::shared_ptr<Shape> shape) :Command(start, shape){}
+	SetPenCommand(const wxPoint& start, std::shared_ptr<Shape> shape) :Command(start, shape) {}
 
 	void Update(const wxPoint& newPoint) override;
 	// Called when the command is completed
@@ -14,4 +15,9 @@ public:
 	void Undo(std::shared_ptr<PaintModel> model) override;
 	// Used to "redo" the command
 	void Redo(std::shared_ptr<PaintModel> model) override;
+private:
+	std::shared_ptr<Shape> mShape;
+
+	wxPen mPen; 
+
 };

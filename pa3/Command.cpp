@@ -6,6 +6,10 @@
 #include "EllipseShape.h"
 #include "LineShape.h"
 #include "PencilShape.h"
+#include "SetPenCommand.h"
+#include "SetBrushCommand.h"
+#include "DeleteCommand.h"	
+#include "MoveCommand.h"
 Command::Command(const wxPoint& start, std::shared_ptr<Shape> shape)
 	:mStartPoint(start)
 	,mEndPoint(start)
@@ -30,24 +34,48 @@ std::shared_ptr<Command> CommandFactory::Create(std::shared_ptr<PaintModel> mode
 	{
 	case CM_DrawRect:
 		shape = std::make_shared<RectShape>(start);
-		model->AddShape(shape); 
-		retVal= std::make_shared<DrawCommand>(start, shape);
+		//model->AddShape(shape); 
+		//retVal= std::make_shared<DrawCommand>(start, shape);
 		break; 
 	case CM_DrawEllipse:
 		shape = std::make_shared<EllipseShape>(start);
-		model->AddShape(shape);
-		retVal = std::make_shared<DrawCommand>(start, shape);
+		//model->AddShape(shape);
+		//retVal = std::make_shared<DrawCommand>(start, shape);
 		break;
 	case CM_DrawLine:
 		shape = std::make_shared<LineShape>(start);
-		model->AddShape(shape);
-		retVal = std::make_shared<DrawCommand>(start, shape);
+		//model->AddShape(shape);
+		//retVal = std::make_shared<DrawCommand>(start, shape);
 		break;
 	case CM_DrawPencil:
 		shape = std::make_shared<PencilShape>(start);
-		model->AddShape(shape);
-		retVal = std::make_shared<DrawCommand>(start, shape);
+
+		//model->AddShape(shape);
+		//retVal = std::make_shared<DrawCommand>(start, shape);
 		break;
+	case CM_SetPen:
+		shape = model->GetSelectedShape();
+		retVal = std::make_shared<SetPenCommand>(start, shape);
+		return retVal;
+	case CM_SetBrush:
+		shape = model->GetSelectedShape();
+		retVal = std::make_shared<SetBrushCommand>(start, shape);
+		return retVal;
+	case CM_Delete:
+		shape = model->GetSelectedShape();
+		retVal = std::make_shared<DeleteCommand>(start, shape);
+		return retVal;
+	case CM_Move:
+		shape = model->GetSelectedShape();
+		retVal = std::make_shared<MoveCommand>(start, shape);
+		return retVal;
+
+	default:
+		return retVal;
 	}
+	shape->SetBrush(model->GetBrush());
+	shape->SetPen(model->GetPen()); 
+	model->AddShape(shape);
+	retVal = std::make_shared<DrawCommand>(start, shape);
 	return retVal;
 }

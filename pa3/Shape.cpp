@@ -5,8 +5,12 @@ Shape::Shape(const wxPoint& start)
 	,mEndPoint(start)
 	,mTopLeft(start)
 	,mBotRight(start)
+	, mSelected(false)
+	
 {
 
+	mOffSet.x = 0;
+	mOffSet.y = 0; 
 }
 
 // Tests whether the provided point intersects
@@ -16,8 +20,8 @@ bool Shape::Intersects(const wxPoint& point) const
 	wxPoint topleft;
 	wxPoint botright;
 	GetBounds(topleft, botright);
-	if (point.x >= topleft.x && point.x <= botright.x &&
-		point.y >= topleft.y && point.y <= botright.y)
+	if (point.x >= topleft.x +mOffSet.x && point.x <= botright.x + mOffSet.x &&
+		point.y >= topleft.y + mOffSet.y && point.y <= botright.y + mOffSet.y)
 	{
 		return true;
 	}
@@ -50,4 +54,17 @@ void Shape::GetBounds(wxPoint& topLeft, wxPoint& botRight) const
 {
 	topLeft = mTopLeft;
 	botRight = mBotRight;
+}
+
+void Shape::DrawSelection(wxDC& dc)
+{
+	dc.SetPen(*wxBLACK_DASHED_PEN);
+	dc.SetBrush	(*wxTRANSPARENT_BRUSH); 
+	wxPoint topLeft = mTopLeft + mOffSet;
+	topLeft.x--;
+	topLeft.y++;
+	wxPoint botRight = mBotRight + mOffSet;
+	botRight.y--;
+	botRight.x++;
+	dc.DrawRectangle(wxRect(topLeft+mOffSet, botRight + mOffSet));
 }

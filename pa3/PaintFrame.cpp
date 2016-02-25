@@ -12,7 +12,8 @@
 #include <wx/filedlg.h>
 #include "PaintDrawPanel.h"
 #include "PaintModel.h"
-
+#include <string>
+#include <wx/wfstream.h>
 wxBEGIN_EVENT_TABLE(PaintFrame, wxFrame)
 	EVT_MENU(wxID_EXIT, PaintFrame::OnExit)
 	EVT_MENU(wxID_NEW, PaintFrame::OnNew)
@@ -183,12 +184,31 @@ void PaintFrame::OnNew(wxCommandEvent& event)
 void PaintFrame::OnExport(wxCommandEvent& event)
 {
 	// TODO
+	wxFileDialog saveDialog(this, "Save File", "", "",
+		"JPG files (*.jpg)|", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (saveDialog.ShowModal() == wxID_OK)
+	{
+		std::string filename = saveDialog.GetPath().ToStdString();
+		mModel->FileSave(filename, mPanel->GetSize());
+		//wxFileOutputStream output_stream(saveDialog.GetPath());
+	}
 }
 
 void PaintFrame::OnImport(wxCommandEvent& event)
 {
 	// TODO
+	wxFileDialog loadDialog(this, "Save File", "", "",
+		"JPG files (*.jpg)|", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	if (loadDialog.ShowModal() == wxID_OK)
+	{
+		std::string filename = loadDialog.GetPath().ToStdString();
+		mModel->FileLoad(filename);
+		//wxFileOutputStream output_stream(saveDialog.GetPath());
+		UpdateUndoRedo();
+		mPanel->PaintNow();
+	}
 }
+
 
 void PaintFrame::OnUndo(wxCommandEvent& event)
 {
@@ -211,26 +231,100 @@ void PaintFrame::OnRedo(wxCommandEvent& event)
 void PaintFrame::OnUnselect(wxCommandEvent& event)
 {
 	// TODO
+	mModel->Unselect(); 
+	mPanel->PaintNow();
+	UpdateSelectDelete();
+
+	UpdateUndoRedo();
 }
 
 void PaintFrame::OnDelete(wxCommandEvent& event)
 {
 	// TODO
+	mModel->CreateCommand(CM_Delete, wxPoint(0, 0));
+	mModel->Finalize();
+	mModel->Unselect(); 
+	mPanel->PaintNow();
+	UpdateSelectDelete();
+
+	UpdateUndoRedo();
 }
 
 void PaintFrame::OnSetPenColor(wxCommandEvent& event)
 {
 	// TODO
+	wxColourData data;
+	data.SetColour(mModel->GetPenColor());
+
+	wxColourDialog dialog(this, &data);
+	if (dialog.ShowModal() == wxID_OK)
+	{
+		mModel->SetPenColor(dialog.GetColourData().GetColour());
+		if (mModel->HasSelection())
+		{
+			mModel->CreateCommand(CM_SetPen, wxPoint(0, 0));
+			mModel->Finalize();
+		}
+	}
+	mPanel->PaintNow();
+
+	UpdateUndoRedo();
 }
 
 void PaintFrame::OnSetPenWidth(wxCommandEvent& event)
 {
 	// TODO
+	wxTextEntryDialog textEntry(this,"enter pen width");
+
+	if (textEntry.ShowModal() == wxID_OK)
+	{
+		std::string entryString = textEntry.GetValue();
+		if (!entryString.empty())
+		{
+			try 
+			{
+				int width = std::stoi(entryString);
+				if (width <= 10 && width > 0)
+				{
+					mModel->SetPenWidth(width);
+					if (mModel->HasSelection())
+					{
+						mModel->CreateCommand(CM_SetPen, wxPoint(0, 0));
+						mModel->Finalize();
+					}
+				}
+			}
+			catch (std::invalid_argument)
+			{
+
+			}
+
+		}
+	}
+	mPanel->PaintNow();
+
+	UpdateUndoRedo();
 }
 
 void PaintFrame::OnSetBrushColor(wxCommandEvent& event)
 {
 	// TODO
+	wxColourData data;
+	data.SetColour(mModel->GetBrushColor());
+
+	wxColourDialog dialog(this, &data);
+	if (dialog.ShowModal() == wxID_OK)
+	{
+		mModel->SetBrushColor(dialog.GetColourData().GetColour());
+		if (mModel->HasSelection())
+		{
+			mModel->CreateCommand(CM_SetBrush, wxPoint(0, 0));
+			mModel->Finalize();
+		}
+	}
+	mPanel->PaintNow();
+
+	UpdateUndoRedo();
 }
 
 void PaintFrame::OnMouseButton(wxMouseEvent& event)
@@ -238,22 +332,41 @@ void PaintFrame::OnMouseButton(wxMouseEvent& event)
 	if (event.LeftDown())
 	{
 		// TODO: This is when the left mouse button is pressed
-		switch (mCurrentTool)
+		if (!mModel->IsMoveMode())
 		{
-		case ID_DrawRect:
-			mModel->CreateCommand(CM_DrawRect, event.GetPosition());
-			break;
-		case ID_DrawEllipse:
-			mModel->CreateCommand(CM_DrawEllipse, event.GetPosition());
-			break;
-		case ID_DrawLine:
-			mModel->CreateCommand(CM_DrawLine, event.GetPosition());
-			break;
-		case ID_DrawPencil:
-			mModel->CreateCommand(CM_DrawPencil, event.GetPosition());
-			break;
+			mModel->Unselect();
+			switch (mCurrentTool)
+			{
+			case ID_DrawRect:
+				mModel->CreateCommand(CM_DrawRect, event.GetPosition());
+				break;
+			case ID_DrawEllipse:
+				mModel->CreateCommand(CM_DrawEllipse, event.GetPosition());
+				break;
+			case ID_DrawLine:
+				mModel->CreateCommand(CM_DrawLine, event.GetPosition());
+				break;
+			case ID_DrawPencil:
+				mModel->CreateCommand(CM_DrawPencil, event.GetPosition());
+				break;
+			case ID_Selector:
+				mModel->SelectionAtPoint(event.GetPosition());
+				UpdateSelectDelete();
+				break;
+			}
 		}
+		else
+		{
+			if (!mModel->IsMoveAndCommandMode())
+			{
+				mModel->CreateCommand(CM_Move, event.GetPosition());
+			}
+			else
+			{
+				mModel->UpdateCommand(event.GetPosition());
+			}
 
+		}
 	}
 	else if (event.LeftUp())
 	{
@@ -277,9 +390,20 @@ void PaintFrame::OnMouseMove(wxMouseEvent& event)
 	if (mModel->HasActiveCommand())
 	{
 		mModel->UpdateCommand(event.GetPosition());
-		mPanel->PaintNow();
+	}
+	if (mModel->IsIntersectWithSelection(event.GetPosition()))
+	{
+		//std::cout << "intersect" << std::endl;
+		SetCursor(CU_Move);
+		mModel->SetMoveMode(true);
+	}
+	else
+	{
+		SetCursor(CU_Default);
+		mModel->SetMoveMode(false);
 
 	}
+	mPanel->PaintNow();
 }
 
 void PaintFrame::ToggleTool(EventID toolID)
@@ -289,7 +413,10 @@ void PaintFrame::ToggleTool(EventID toolID)
 	{
 		mToolbar->ToggleTool(i, false);
 	}
-
+	if (mModel != nullptr)
+	{
+		mModel->Unselect();
+	}
 	// Select the new tool
 	mToolbar->ToggleTool(toolID, true);
 
@@ -332,4 +459,12 @@ void PaintFrame::UpdateUndoRedo()
 	mEditMenu->Enable(wxID_REDO, mModel->CanRedo());
 	mToolbar->EnableTool(wxID_UNDO, mModel->CanUndo());
 	mToolbar->EnableTool(wxID_REDO, mModel->CanRedo());
+}
+
+void PaintFrame::UpdateSelectDelete()
+{
+	mEditMenu->Enable(ID_Unselect, mModel->HasSelection());
+	mEditMenu->Enable(ID_Delete, mModel->HasSelection());
+
+
 }
