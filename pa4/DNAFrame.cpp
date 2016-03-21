@@ -70,4 +70,22 @@ void DNAFrame::OnNew(wxCommandEvent& event)
 void DNAFrame::OnAminoHist(wxCommandEvent& event)
 {
 	// TODO: Implement (File>Amino Acid Histogram...)
+
+	wxFileDialog loadDialog(this, "Save File", "", "",
+		"JPG files (*.jpg)|", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	if (loadDialog.ShowModal() == wxID_OK)
+	{
+		std::string filename = loadDialog.GetPath().ToStdString();
+		try {
+			mFastaReader.LoadFile(filename); 
+		}
+		catch (FileLoadExcept)
+		{
+			wxMessageBox("FastaFile is Invalid", "Error", wxOK | wxICON_ERROR); 
+		}
+		//mModel->FileLoad(filename);
+		//wxFileOutputStream output_stream(saveDialog.GetPath());
+		//UpdateUndoRedo();
+		mPanel->PaintNow();
+	}	
 }
