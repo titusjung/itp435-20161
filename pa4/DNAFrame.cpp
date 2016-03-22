@@ -20,23 +20,27 @@
 
 enum
 {
-	ID_AMINO_HIST=1000,
+	ID_AMINO_HIST = 1000,
+	ID_ON_COMPARE = 2000
 };
 
 wxBEGIN_EVENT_TABLE(DNAFrame, wxFrame)
 	EVT_MENU(wxID_EXIT, DNAFrame::OnExit)
 	EVT_MENU(wxID_NEW, DNAFrame::OnNew)
 	EVT_MENU(ID_AMINO_HIST, DNAFrame::OnAminoHist)
+	EVT_MENU(ID_ON_COMPARE, DNAFrame::OnCompare)
 wxEND_EVENT_TABLE()
 
 DNAFrame::DNAFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 : wxFrame(NULL, wxID_ANY, title, pos, size)
 {
 	// File menu
+	mDNAModel = std::make_shared<DNAModel>(); 
 	wxMenu* menuFile = new wxMenu;
 	menuFile->Append(wxID_NEW);
 	menuFile->Append(ID_AMINO_HIST, "Amino Acid Histogram...",
 					 "Create a histogram from a FASTA file.");
+	menuFile->Append(ID_ON_COMPARE, "Compare two DNA sequences..", " "); 
 	menuFile->Append(wxID_EXIT);
 	
 	wxMenuBar* menuBar = new wxMenuBar;
@@ -48,13 +52,16 @@ DNAFrame::DNAFrame(const wxString& title, const wxPoint& pos, const wxSize& size
 	wxBoxSizer* sizer = new wxBoxSizer(wxHORIZONTAL);
 	mPanel = new DNADrawPanel(this);
 	sizer->Add(mPanel, 1, wxEXPAND);
-	
+	mPanel->SetModel(mDNAModel); 
+
 	SetSizer(sizer);
 	SetAutoLayout(true);
 	Show(true);
 	
 	SetMinSize(GetSize());
 	SetMaxSize(GetSize());
+	///mFastaReader = mDNAModel->GetReader();
+	//mDNATranslator = mDNAModel->GetTranslator(); 
 }
 
 void DNAFrame::OnExit(wxCommandEvent& event)
@@ -77,15 +84,33 @@ void DNAFrame::OnAminoHist(wxCommandEvent& event)
 	{
 		std::string filename = loadDialog.GetPath().ToStdString();
 		try {
-			mFastaReader.LoadFile(filename); 
+			/*
+			std::shared_ptr<class DNATranslator> dnaTranslator = mDNAModel->GetTranslator();
+			std::shared_ptr<class FastaReader> fastaReader = mDNAModel->GetReader();
+			fastaReader->LoadFile(filename); 
+			dnaTranslator->Load(fastaReader->GetBody());*/
+			mDNAModel->Load(filename); 
+			//mDNAModel->Loaded(); 
 		}
 		catch (FileLoadExcept)
 		{
 			wxMessageBox("FastaFile is Invalid", "Error", wxOK | wxICON_ERROR); 
+			mDNAModel->Loaded(false); 
 		}
 		//mModel->FileLoad(filename);
 		//wxFileOutputStream output_stream(saveDialog.GetPath());
 		//UpdateUndoRedo();
 		mPanel->PaintNow();
 	}	
+}
+
+void DNAFrame::OnCompare(wxCommandEvent & event)
+{
+	DNAAlignDlg* dnaDialog =  new DNAAlignDlg();
+	if (dnaDialog->ShowModal() == wxID_OK)
+	{
+		mNWAlgo.Load(dnaDialog->GetInputAPath(), dnaDialog->GetInputBPath()); 
+		mNWAlgo.Process(); 
+	}
+	delete dnaDialog; 
 }

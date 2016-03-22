@@ -10,7 +10,7 @@ FastaReader::FastaReader()
 	mHeaderString = "";
 	mBody = ""; 
 }
-FastaReader::FastaReader(std::string& filename)
+FastaReader::FastaReader(const std::string& filename)
 {
 	//std::ifstream fastaFile;
 	mHeaderString = "";
@@ -18,7 +18,7 @@ FastaReader::FastaReader(std::string& filename)
 	LoadFile(filename); 
 }
 
-void FastaReader::LoadFile(std::string& filename)
+void FastaReader::LoadFile(const std::string& filename)
 {
 	std::ifstream file(filename, std::ios::in | std::ios::ate);
 	std::ofstream test("test.txt"); 
@@ -60,4 +60,10 @@ void FastaReader::LoadFile(std::string& filename)
 	file.close(); 
 	
 	//std::cout << "My Header " << mHeaderString << std::endl;
+}
+
+void FastaReader::Clear()
+{
+	mHeaderString.clear();
+	mBody.clear(); 
 }

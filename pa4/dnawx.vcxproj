@@ -15,9 +15,11 @@
     <ClInclude Include="DNAApp.h" />
     <ClInclude Include="DNADrawPanel.h" />
     <ClInclude Include="DNAFrame.h" />
+    <ClInclude Include="DNAModel.h" />
     <ClInclude Include="DNATranslator.h" />
     <ClInclude Include="Exceptions.h" />
     <ClInclude Include="FastaReader.h" />
+    <ClInclude Include="NWAlgo.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -25,8 +27,10 @@
     <ClCompile Include="DNAApp.cpp" />
     <ClCompile Include="DNADrawPanel.cpp" />
     <ClCompile Include="DNAFrame.cpp" />
+    <ClCompile Include="DNAModel.cpp" />
     <ClCompile Include="DNATranslator.cpp" />
     <ClCompile Include="FastaReader.cpp" />
+    <ClCompile Include="NWAlgo.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>

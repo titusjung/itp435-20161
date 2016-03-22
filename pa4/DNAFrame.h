@@ -12,7 +12,9 @@
 #include <wx/menu.h>
 #include <memory>
 #include "Fastareader.h"
-
+#include "DNATranslator.h"
+#include "DNAModel.h"
+#include "NWAlgo.h"
 class DNAFrame : public wxFrame
 {
 public:
@@ -21,6 +23,7 @@ private:
 	void OnExit(wxCommandEvent& event);
 	void OnNew(wxCommandEvent& event);
 	void OnAminoHist(wxCommandEvent& event);
+	void OnCompare(wxCommandEvent& event); 
 	
 	wxDECLARE_EVENT_TABLE();
 private:
@@ -28,5 +31,9 @@ private:
 	class DNADrawPanel* mPanel;
 	
 	// Variables here
-	FastaReader mFastaReader; 
+	//std::shared_ptr<class FastaReader> mFastaReader; 
+	//DNATranslator mDNATranslator; 
+//	std::shared_ptr<class DNATranslator> mDNATranslator; 
+	std::shared_ptr<class DNAModel> mDNAModel; 
+	NWAlgo mNWAlgo; 
 };
