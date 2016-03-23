@@ -17,7 +17,7 @@
 #include "DNADrawPanel.h"
 #include "Exceptions.h"
 #include "DNAAlignDlg.h"
-
+#include "Timer.h"
 enum
 {
 	ID_AMINO_HIST = 1000,
@@ -106,11 +106,17 @@ void DNAFrame::OnAminoHist(wxCommandEvent& event)
 
 void DNAFrame::OnCompare(wxCommandEvent & event)
 {
-	DNAAlignDlg* dnaDialog =  new DNAAlignDlg();
-	if (dnaDialog->ShowModal() == wxID_OK)
+	DNAAlignDlg dnaDialog;
+	Timer timer; 
+	double time;
+	if (dnaDialog.ShowModal() == wxID_OK)
 	{
-		mNWAlgo.Load(dnaDialog->GetInputAPath(), dnaDialog->GetInputBPath()); 
+		timer.Start(); 
+		mNWAlgo.Load(dnaDialog.GetInputAPath(), dnaDialog.GetInputBPath());
+		wxBusyInfo info("Calculating pairwise match...", this); 
 		mNWAlgo.Process(); 
+		mNWAlgo.Print(dnaDialog.GetOutputPath());
+		time = timer.GetElapsed(); 
 	}
-	delete dnaDialog; 
+	wxMessageBox("time to complete is: " + std::to_string(time), "Time to completion");
 }

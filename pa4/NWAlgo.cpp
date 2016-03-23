@@ -6,14 +6,17 @@ void NWAlgo::Load(const std::string & filename, const  std::string & filename2)
 	mFileA.LoadFile(filename);
 	mFileB.LoadFile(filename2); 
 	
-	mBodyA = mFileA.GetBody();
-	mBodyB = mFileB.GetBody();
+	//mBodyA = mFileA.GetBody();
+	//mBodyB = mFileB.GetBody();
 }
 
 void NWAlgo::Process()
 {
-	int width = mBodyA.size() + 1;
-	int height = mBodyB.size() + 1;
+	mResultA.clear();
+	mResultB.clear(); 
+	int width = mFileA.Size() + 1;
+	int height = mFileB.Size() + 1;
+
 	std::vector<std::vector<short>> scoreGrid(height, std::vector<short>(width));
 	std::vector<std::vector<Direction>> directionGrid(height, std::vector<Direction>(width));
 
@@ -34,7 +37,9 @@ void NWAlgo::Process()
 		for (int j = 1; j < width;j++)
 		{
 			short match;
-			if (mBodyA.at(j-1) == mBodyB.at(i-1))
+			char a = mFileA.At(j - 1);
+			char b = mFileB.At(i - 1);
+			if (a == b)
 			{
 				match = 1;
 			}
@@ -46,12 +51,12 @@ void NWAlgo::Process()
 			short scoreLeft = scoreGrid[i][j - 1] + mGap;
 			short scoreUp = scoreGrid[i-1][j] + mGap;
 
-			if (scoreAboveLeft > scoreLeft && scoreAboveLeft > scoreUp)
+			if (scoreAboveLeft >= scoreLeft && scoreAboveLeft >= scoreUp)
 			{
 				scoreGrid[i][j] = scoreAboveLeft; 
 				directionGrid[i][j] = UPLEFT; 
 			}
-			else if (scoreLeft > scoreUp)
+			else if (scoreLeft >= scoreUp)
 			{
 				scoreGrid[i][j] = scoreLeft;
 				directionGrid[i][j] = LEFT;
@@ -70,29 +75,73 @@ void NWAlgo::Process()
 	int i = height - 1;
 	int j = width - 1;
 	mScore = scoreGrid[i][j]; 
-	while (i != 0 && j != 0)
+	while (i != 0 || j != 0)
 	{
-		switch (scoreGrid[i][j])
+		switch (directionGrid[i][j])
 		{
 		case UPLEFT:
-			resultA += mBodyA[i];
-			resultB += mBodyB[j];
+		//	if (mBodyA[j] != '\0')
+			{
+				mResultA += mFileA.At(j-1);
+
+			}
+			//if (mBodyB[i] != '\0')
+			{
+				//mResultB += mBodyB[i-1];
+				mResultB += mFileB.At( i- 1);
+
+			}
 			i--;
 			j--; 
 			break;
 		case LEFT:
-			resultA += mBodyA[i];
+		//	if (mBodyA[j] != '\0')
+			{
+				//mResultA += mBodyA[j-1];
+				mResultA += mFileA.At(j - 1);
+
+			}
 			mResultB += "_";
 			j--;
 			break;
 		case UP:
-			resultA += "_";
-			resultB += mBodyB[j];
+			mResultA += "_";
+		//	if (mBodyB[i] != '\0')
+			{
+				//mResultB += mBodyB[i-1];
+				mResultB += mFileB.At(i - 1);
+
+			}	
 			i--;
 			break; 
 		}
 	}
-	mResultA = "";
+	std::reverse(mResultA.begin(), mResultA.end());
+	std::reverse(mResultB.begin(), mResultB.end());
+	/*
+	std::ofstream output("test.txt", std::fstream::out, std::fstream::trunc);
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width;j++)
+		{
+			switch (directionGrid[i][j])
+			{
+			case UPLEFT:
+				output << "UL ";
+				break;
+			case LEFT:
+				output << "LE ";
+				break;
+			case UP:
+				output << "UP ";
+				break;
+			}
+		}
+		output << std::endl; 
+
+	}
+	output.close(); */
+	/*
 	for (std::string::reverse_iterator rit = resultA.rbegin(); rit != resultA.rend();++rit)
 	{
 		mResultA += *rit; 
@@ -101,14 +150,14 @@ void NWAlgo::Process()
 	for (std::string::reverse_iterator rit = resultB.rbegin(); rit != resultB.rend();++rit)
 	{
 		mResultB += *rit;
-	}
+	}*/
 
 
 }
 
 void NWAlgo::Print(const std::string & filename)
 {
-	std::ofstream output(filename);
+	std::ofstream output(filename, std::fstream::out, std::fstream::trunc);
 	if (!output.is_open())
 	{
 		return; 
@@ -117,14 +166,68 @@ void NWAlgo::Print(const std::string & filename)
 	output <<"B: "<<  mFileB.GetHeader() << std::endl; 
 	output << "Score: " << mScore << std::endl; 
 	output << std::endl; 
-	int i = 0;
-	int j = 0;
-	int i2 = 0;
-	int j2 = 0;
-	std::string subA = mResultA.substr(0, 70); 
-	int range = std::max(mBodyA.size(), mBodyB.size())/70; 
-	for (int i = 0; i < range; i++)
+	output.flush(); 
+	
+	unsigned int range = std::max(mResultA.size(), mResultB.size());
+	std::string stringA = "";
+	std::string stringB = "";
+	std::string connectString = ""; 
+	for (unsigned int i = 0; i < range; i++)
 	{
-		int i2 = i * 70;
+
+		if (i < mResultA.size())
+		{
+			if (mResultA[i] != '\0')
+			{
+				stringA.push_back(mResultA.at(i));
+			}
+		}
+		if (i < mResultB.size())
+		{
+			if (mResultB[i] != '\0')
+			{
+				stringB.push_back(mResultB.at(i));
+			}
+		}
+		if (i < mResultA.size() && i < mResultB.size() && mResultA.at(i) == mResultB.at(i))
+		{
+			if (mResultA[i] != '\0')
+			{
+				connectString.push_back('|');
+			}
+		}
+		else
+		{
+			connectString.push_back(' ');
+		}
+		if (connectString.size()%70==0 && i!=0)
+		{
+
+			std::string printString = stringA + "\n" + connectString + "\n" + stringB+"\n \n";
+			output << printString; 
+			/*
+			output << stringA << std::endl;
+			output << connectString << std::endl; 
+			output << stringB << std::endl;
+			output << std::endl;
+			output.flush();
+			*/
+			stringA.clear(); 
+			stringB.clear();
+			connectString.clear(); 
+
+		}
 	}
+	
+	std::string printString = stringA + "\n" + connectString + "\n" + stringB+"\n \n";
+	output << printString; 
+	//output << stringA << std::endl;
+	//output << connectString << std::endl;
+	//output << stringB << std::endl;
+	//output << std::endl;
+	//std::string hello = "helloworld";
+	//output << hello << "\n";
+	output.flush(); 
+
+	output.close(); 
 }

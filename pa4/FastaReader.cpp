@@ -20,6 +20,8 @@ FastaReader::FastaReader(const std::string& filename)
 
 void FastaReader::LoadFile(const std::string& filename)
 {
+	mBody.clear();
+	mHeaderString.clear(); 
 	std::ifstream file(filename, std::ios::in | std::ios::ate);
 	std::ofstream test("test.txt"); 
 	if (!file.is_open())
@@ -66,4 +68,9 @@ void FastaReader::Clear()
 {
 	mHeaderString.clear();
 	mBody.clear(); 
+}
+
+char FastaReader::At(int i)
+{
+	return mBody[i];
 }

@@ -10,6 +10,8 @@ public:
 	std::string GetBody() const { return mBody;  }
 	std::string GetHeader() const { return mHeaderString;  }
 	void Clear(); 
+	char At(int i); 
+	int Size() const { return mBody.size();  }
 	//friend class DNATranslator; 
 private:
 	std::string mHeaderString;

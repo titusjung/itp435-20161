@@ -53,6 +53,7 @@ void DNADrawPanel::Render(wxDC& dc)
 	std::shared_ptr<class DNATranslator> dnaTranslator = mDNAModel->GetTranslator();
 
 	dc.SetPen(*wxBLACK_PEN); 
+	dc.SetBrush(*wxBLUE_BRUSH); 
 	dc.DrawText(fastaReader->GetHeader(), wxPoint(10,10));  
 	double total = static_cast<double>(dnaTranslator->GetTotal()); 
 	int tablestart = 170; 
