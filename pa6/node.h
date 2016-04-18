@@ -71,7 +71,7 @@ class NRangedAttack : public NStatement
 public:
 	virtual void CodeGen(CodeContext& context) const override;
 }; 
-
+/*
 class Is_Test : public Node
 {
 public:
@@ -80,25 +80,25 @@ public:
 	virtual void CodeGen(CodeContext& context) const override;
 private:
 	std::string mTestname; 
-	int mNumber;
+	NNumeric* mDir;
 };
-
+*/
 class Is_Human : public NStatement
 {
 public:
-	Is_Human(int n); 
+	Is_Human(NNumeric* dir);
 	virtual void CodeGen(CodeContext& context) const override;
 private:
-	int mValue; 
+	NNumeric* mDir;
 };
 
 class Is_Zombie : public NStatement
 {
 public:
-	Is_Zombie(int n);
+	Is_Zombie(NNumeric* dir);
 	virtual void CodeGen(CodeContext& context) const override;
 private:
-	int mValue; 
+	NNumeric* mDir;
 };
 
 class Is_Passable : public NStatement

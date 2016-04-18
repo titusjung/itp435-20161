@@ -35,7 +35,11 @@ int g_LineNumber = 1;
 "forward"				{ return TOKEN(TFORWARD); }
 \/\/.+					{ g_LineNumber++;}
 "attack"				{ return TOKEN(TATTACK); }
-is_[a-zA-z0-9]+		{return TOKEN(TBOOLEAN);}
+"is_zombie"				{return TOKEN(TISZOMBIE);}
+"is_human"				{return TOKEN(TISHUMAN); }
+"is_passable"			{return TOKEN(TISPASSABLE);}
+"is_random"				{return TOKEN(TISRANDOM);}
+"is_wall"				{return TOKEN(TISWALL);}
 "if"					{return TOKEN(TIF); }
 "else"					{return TOKEN(TELSE); }
 "ranged_attack"			{return TOKEN(TRANGED); }	

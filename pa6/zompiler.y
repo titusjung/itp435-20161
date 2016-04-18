@@ -28,11 +28,11 @@ NBlock* g_MainBlock = nullptr;
 /* Terminal symbols */
 %token <string> TINTEGER
 %token <token> TLBRACE TRBRACE TSEMI TLPAREN TRPAREN
-%token <token> TMAIN TROTATE TFORWARD TBOOLEAN TIF TELSE TATTACK TRANGED
+%token <token> TMAIN TROTATE TFORWARD TBOOLEAN TIF TELSE TATTACK TRANGED TISHUMAN TISZOMBIE TISPASSABLE TISRANDOM TISWALL
 
 /* Statements */
 %type <block> main_loop block
-%type <statement> statement rotate attack ranged else if
+%type <statement> statement rotate attack ranged ifelse forward is_zombie is_human is_passable is_random is_wall
  
 /* Expressions */
 %type <numeric> numeric
@@ -47,7 +47,7 @@ block		: statement { std::cout << "Single statement" << std::endl; }
 /* TODO: Add support for multiple statements in a block */
 ;
 
-statement	: rotate TSEMI  | ifelse  | bool TSEMI | attack TSEMI | bool | ranged TSEMI | forward TSEMI 
+statement	: rotate TSEMI  | ifelse  | bool TSEMI | attack TSEMI | bool | ranged TSEMI | forward TSEMI | is_zombie | is_human| is_passable | is_random  | is_wall
 ;
 			
 rotate		: TROTATE TLPAREN numeric TRPAREN { std::cout << "Rotate command" << std::endl;
@@ -59,7 +59,7 @@ numeric		: TINTEGER { std::cout << "Numeric value of " << *($1) << std::endl;
 ;
 ifelse		: TIF TLPAREN bool TRPAREN {std::cout << "IF command" << std::endl; } TLBRACE block TRBRACE TELSE TLBRACE block TRBRACE  { std::cout << "If ELSE statement" << std::endl;}
 ;
-bool		: TBOOLEAN TLPAREN TRPAREN  | TBOOLEAN TLPAREN numeric TRPAREN { std::cout << "Boolean command" << std::endl; }
+bool		:  is_zombie | is_human| is_passable | is_random  | is_wall
 ;
 attack		: TATTACK TLPAREN TRPAREN   { std::cout << "ATTACK command" << std::endl;
 											$$ = new NAttack(); }
@@ -67,6 +67,16 @@ attack		: TATTACK TLPAREN TRPAREN   { std::cout << "ATTACK command" << std::endl
 ranged		: TRANGED TLPAREN TRPAREN   { std::cout << "RANGED ATTACK command" << std::endl;
 											$$= new NRangedAttack(); }
 ;
-forward		: TFORWARD TLPAREN TRPAREN {}
-
+is_zombie	: TISZOMBIE TLPAREN numeric TRPAREN {$$ = new Is_Zombie($3);}
+;
+is_human	: TISHUMAN TLPAREN numeric TRPAREN  {$$ = new Is_Human($3);}
+;
+is_passable : TISPASSABLE TLPAREN TRPAREN		{$$ = new Is_Passable();}
+;
+is_random	: TISRANDOM TLPAREN TRPAREN			{$$ = new Is_Random();}
+;
+is_wall		: TISWALL TLPAREN TRPAREN			{$$ = new Is_Wall(); }
+;
+forward		: TFORWARD TLPAREN TRPAREN { $$= new NForward();}
+;
 %%

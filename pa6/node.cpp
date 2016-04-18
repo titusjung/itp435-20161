@@ -55,22 +55,22 @@ void NAttack::CodeGen(CodeContext & context) const
 	context.mOps.push_back("attack");
 }
 
-Is_Human::Is_Human(int n) : mValue(n)
+Is_Human::Is_Human(NNumeric* dir) : mDir(dir)
 {
 }
 
 void Is_Human::CodeGen(CodeContext & context) const
 {
-	context.mOps.push_back("test_human,"+mValue);
+	context.mOps.push_back("test_human,"+mDir->mvalue);
 }
 
-Is_Zombie::Is_Zombie(int n) : mValue(n)
+Is_Zombie::Is_Zombie(NNumeric* dir) : mDir(dir)
 {
 }
 
 void Is_Zombie::CodeGen(CodeContext & context) const
 {
-	context.mOps.push_back("test_zombie," + mValue);
+	context.mOps.push_back("test_zombie," + mDir->mvalue);
 }
 
 void Is_Passable::CodeGen(CodeContext & context) const
@@ -88,15 +88,16 @@ void Is_Wall::CodeGen(CodeContext & context) const
 {
 	context.mOps.push_back("test_wall");
 }
-
-Is_Test::Is_Test(std::string testname) : mTestname(testname), mNumber(-1)
+/*
+Is_Test::Is_Test(std::string testname) : mTestname(testname), mDir(-1)
 {
 }
 
-Is_Test::Is_Test(std::string testname, int number) : mTestname(testname), mNumber(number)
+Is_Test::Is_Test(std::string testname, int number) : mTestname(testname), mDir(number)
 {
 }
 
 void Is_Test::CodeGen(CodeContext & context) const
 {
 }
+*/
