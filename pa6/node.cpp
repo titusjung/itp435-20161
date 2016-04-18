@@ -1,6 +1,6 @@
 #include "node.h"
 #include <sstream>
-
+#include <iostream>
 void NBlock::AddStatement(NStatement* statement)
 {
 	mStatements.push_back(statement);
@@ -9,8 +9,10 @@ void NBlock::AddStatement(NStatement* statement)
 void NBlock::CodeGen(CodeContext& context) const
 {
 	// TODO: Loop through statements in list and code gen them
+	int i = 0;
 	for each (NStatement* state in mStatements)
 	{
+		i++;
 		state->CodeGen(context); 
 	}
 }

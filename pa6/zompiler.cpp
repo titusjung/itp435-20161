@@ -24,7 +24,11 @@ int main(int argc, char* argv[])
 	zompilerparse();
 	
 	// TODO: CodeGen from g_MainBlock
-	
+	CodeContext codeContext; 
+	if (g_MainBlock != nullptr) 
+	{
+		g_MainBlock->CodeGen(codeContext);
+	}
 	// Close the file stream
 	fclose(zompilerin);
 
