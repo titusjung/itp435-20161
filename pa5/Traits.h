@@ -10,3 +10,8 @@ struct HumanTraits
 	const static int ACTIONS_PER_TURN = 2;
 	const static bool INFECT_ON_ATTACK = false;
 };
+
+struct EmptyTraits
+{
+
+}; 

@@ -5,7 +5,7 @@
 #include <memory>
 #include "Op.h"
 #include "Exceptions.h"
-
+#include "World.h"
 // Defines state data accessible by the machine and ops
 struct MachineState
 {
@@ -36,10 +36,16 @@ struct MachineState
 
 	int GetActionsPerTurn() const noexcept { return mActionsPerTurn; }
 	bool GetInfect() const noexcept { return mInfectOnAttack; }
+	int GetXLocation() const noexcept { return mXLoc; }
+	int GetYLocation() const noexcept { return mYLoc; }
+	void SetLocation(const int xloc, const int yloc); 
 private:
 	// Data which is set by the traits
 	int mActionsPerTurn;
 	bool mInfectOnAttack;
+	int mXLoc;
+	int mYLoc;
+	std::shared_ptr<World> mWorld; 
 };
 
 // Describes the machine which processes ops.

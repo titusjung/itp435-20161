@@ -47,3 +47,29 @@ struct OpGoto : Op
 
 	virtual void Execute(MachineState& state) override;
 };
+
+struct OpAttack : Op
+{
+	OpAttack(int parameter)
+		: Op("OpAttack", parameter)
+	{ }
+
+	virtual void Execute(MachineState& state) override;
+};
+struct OpRanged_Attack : Op
+{
+	OpRanged_Attack(int parameter)
+		: Op("OpRangedAttack", parameter)
+	{ }
+
+	virtual void Execute(MachineState& state) override;
+};
+
+struct OpForward : Op
+{
+	OpForward(int parameter)
+		: Op("OpRangedAttack", parameter)
+	{ }
+
+	virtual void Execute(MachineState& state) override;
+};

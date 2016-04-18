@@ -32,6 +32,13 @@ int g_LineNumber = 1;
 ")"						{ return TOKEN(TRPAREN); }
 
 "rotate"				{ return TOKEN(TROTATE); }
+"forward"				{ return TOKEN(TFORWARD); }
+\/\/.+					{ g_LineNumber++;}
+"attack"				{ return TOKEN(TATTACK); }
+is_[a-zA-z0-9]+		{return TOKEN(TBOOLEAN);}
+"if"					{return TOKEN(TIF); }
+"else"					{return TOKEN(TELSE); }
+"ranged_attack"			{return TOKEN(TRANGED); }	
 
 %{
 /* Do not add any of your own tokens below this line!!!! */

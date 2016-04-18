@@ -84,11 +84,13 @@
     <ClInclude Include="Op.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Traits.h" />
+    <ClInclude Include="World.h" />
     <ClInclude Include="ZomApp.h" />
     <ClInclude Include="ZomDrawPanel.h" />
     <ClInclude Include="ZomFrame.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Machine.cpp" />
     <ClCompile Include="Op.cpp" />
     <ClCompile Include="ZomApp.cpp" />
     <ClCompile Include="ZomDrawPanel.cpp" />
