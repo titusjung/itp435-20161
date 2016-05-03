@@ -3,6 +3,7 @@
 #include <iostream>
 void NBlock::AddStatement(NStatement* statement)
 {
+	std::cout << "adding statments" << std::endl; 
 	mStatements.push_back(statement);
 }
 
