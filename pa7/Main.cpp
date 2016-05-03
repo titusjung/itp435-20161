@@ -69,8 +69,8 @@ int main(int argc, const char* argv[])
 			ofile <<"("<< a << "," << b <<")"<< std::endl;
 
 		}
-		Population pop = CrossOverPopulation(selectedVec, pop, random, mutationChance);
-
+		Population npop = CrossOverPopulation(selectedVec, pop, random, mutationChance);
+		pop = npop; 
 	}
 	return 0;
 }

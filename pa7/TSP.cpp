@@ -235,6 +235,7 @@ Population CrossOverPopulation(const std::vector<std::pair<int, int>>& selectedP
 			nPop.mMembers.push_back(next); 
 		}
 	); */
+	
 	for (unsigned int i = 0; i < selectedPairs.size(); i++)
 	{
 		std::vector<int> next = GetCrossover(pop.mMembers[selectedPairs[i].first], pop.mMembers[selectedPairs[i].second], rand, mutationChance);
